@@ -1,7 +1,9 @@
+import Link from "next/link";
 import React, { useContext } from "react";
 import StoreContext from "../context/store-context";
+import { formatMoney, getVnProductPrice } from "../utils/utils";
 
-function ProductCard({ product }) {
+function ProductCard({ product, toggleModal, isHaveBottom = true }) {
     const { addVariantToCart, cart } = useContext(StoreContext);
 
     const handleAddToCart = (e) => {
@@ -24,13 +26,15 @@ function ProductCard({ product }) {
                 </div>
                 <div className="priduct-img-wrapper posr">
                     <div className="product-img">
-                        <a href="single-product.html">
-                            {images && images.length > 0 ? (
-                                <img src={images[0].url} alt="" />
-                            ) : (
-                                <img src="images/product/p9.jpg" alt="" />
-                            )}
-                        </a>
+                        <Link href={`/product/${product.id}`}>
+                            <a>
+                                {images && images.length > 0 ? (
+                                    <img src={images[0].url} alt="" />
+                                ) : (
+                                    <img src="images/product/p9.jpg" alt="" />
+                                )}
+                            </a>
+                        </Link>
                     </div>
                     <div className="product-inner-text">
                         <div className="product-social-icon social-icon">
@@ -59,6 +63,7 @@ function ProductCard({ product }) {
                                     data-toggle="modal"
                                     data-target=".modal"
                                     href="#"
+                                    onClick={() => toggleModal(product)}
                                 >
                                     <i className=" product-search fa fa-search" />{" "}
                                     quick View
@@ -67,7 +72,7 @@ function ProductCard({ product }) {
                         </div>
                     </div>
                 </div>
-                <div className="product-review">
+                {/* <div className="product-review">
                     <ul>
                         <li>
                             <a href="#">
@@ -95,17 +100,19 @@ function ProductCard({ product }) {
                             </a>
                         </li>
                     </ul>
-                </div>
-                <div className="product-bottom-text posr">
-                    <div className="product-bottom-title deft-underline2">
-                        <a title={title}>
-                            <h4>{title}</h4>
-                        </a>
+                </div> */}
+                {isHaveBottom && (
+                    <div className="product-bottom-text posr">
+                        <div className="product-bottom-title deft-underline2">
+                            <a title={title}>
+                                <h4>{title}</h4>
+                            </a>
+                        </div>
+                        <div className="product-bottom-price">
+                            <span>{formatMoney(getVnProductPrice(product))}</span> <del>$300.00</del>
+                        </div>
                     </div>
-                    <div className="product-bottom-price">
-                        <span>$385.00</span> <del>$300.00</del>
-                    </div>
-                </div>
+                )}
             </div>
         </div>
     );

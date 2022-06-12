@@ -1,6 +1,9 @@
 import React from "react";
+import { getStrapiMedia } from "../utils/media";
+import { get } from "lodash";
+import ReactMarkdown from "react-markdown";
 
-function AboutTop() {
+function AboutTop({ about }) {
     return (
         <div className="about-top-area">
             <div className="container">
@@ -8,7 +11,12 @@ function AboutTop() {
                     <div className="col-md-7 col-sm-12 col-xs-12">
                         <div className="abt-image">
                             <a href="#">
-                                <img src="images/about/abt1.jpg" alt="Domino" />
+                                <img
+                                    src={getStrapiMedia(
+                                        get(about, "attributes.image")
+                                    )}
+                                    alt="Domino"
+                                />
                             </a>
                         </div>
                     </div>
@@ -21,40 +29,9 @@ function AboutTop() {
                                 </h3>
                             </div>
                             <div className="abt-content">
-                                <p>
-                                    Mellentesque faucibus dapibus dapibus. Morbi
-                                    aliquam aliquet neque. Donec placerat
-                                    dapibus sollicitudin. Morbi arcu nisi,
-                                    mattis ut ullamcorper in, dapibus ac nunc.
-                                    Cras bibendum mauris et sapien feugiat.
-                                    scelerisque accumsan nibh gravida. Quisque
-                                    aliquet justo elementum lectus ultrices
-                                    bibendum.
-                                </p>
-                            </div>
-                            <div className="about-feature">
-                                <ul>
-                                    <li>
-                                        <i className="fa fa-check" /> Amazing
-                                        wordpress theme
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check" /> HTML &amp;
-                                        CSS3 build with bootstrap
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check" /> Powerfull
-                                        admin panel
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check" /> Icon well
-                                        organized &amp; SEO optimized friendy
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check" />{" "}
-                                        Iconncredible design
-                                    </li>
-                                </ul>
+                                <ReactMarkdown>
+                                    {get(about, "attributes.description")}
+                                </ReactMarkdown>
                             </div>
                         </div>
                     </div>

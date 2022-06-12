@@ -6,21 +6,24 @@ import DiscountArea from "../components/DiscountArea";
 import FreeOffer from "../components/FreeOffer";
 import ProductArea from "../components/ProductArea";
 import Slider from "../components/Slider";
+import Slider2 from "../components/Slider2";
 import StoreContext from "../context/store-context";
 import styles from "../styles/Home.module.css";
+import { fetchAPI } from "../utils/api";
 import { createClient } from "../utils/client";
+import { getStrapiMedia } from "../utils/media";
 
-export default function Home({ products }) {
+export default function Home({ products, home }) {
     const { addVariantToCart, cart } = useContext(StoreContext);
-    console.log(cart);
+    console.log(home);
 
     return (
         <div>
-            <Slider />
-            <FreeOffer />
-            <DiscountArea />
-            <ProductArea products={products}/>
-            <Brand />
+            <Slider2 images={home.attributes.main_slides}/>
+            <FreeOffer content={home.attributes.three_content}/>
+            {/* <DiscountArea /> */}
+            <ProductArea products={products} />
+            {/* <Brand /> */}
         </div>
     );
 }
@@ -28,10 +31,16 @@ export default function Home({ products }) {
 export const getStaticProps = async () => {
     const client = createClient();
     const { products } = await client.products.list();
+    console.log(products)
+
+    const homeRes = await fetchAPI("/home", {
+        populate: "*",
+    });
 
     return {
         props: {
             products,
+            home: homeRes.data,
         },
     };
 };

@@ -1,10 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import StoreContext from "../context/store-context";
+import ModalProduct from "./ModalProduct";
 import ProductCard from "./ProductCard";
 
 function ProductArea({ products }) {
+    const [isActive, setIsActive] = useState(false);
+    const [currentProduct, setCurrentProduct] = useState(null);
+
+    const toggleModal = (product) => {
+        setIsActive(true);
+        setCurrentProduct(product);
+    };
+
     return (
-        <div className="new-arrival-product-area hp1-napa pt-60">
+        <div className="new-arrival-product-area hp1-napa pt-60 mb-75">
+            <ModalProduct
+                isActive={isActive}
+                setActive={setIsActive}
+                product={currentProduct}
+            />
             <div className="container">
                 <div className="row">
                     <div className="product-tab-category-wrapper">
@@ -72,6 +86,7 @@ function ProductArea({ products }) {
                                             >
                                                 <ProductCard
                                                     product={product}
+                                                    toggleModal={toggleModal}
                                                 />
                                             </div>
                                         ))}

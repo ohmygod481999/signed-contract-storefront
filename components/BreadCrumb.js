@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React from "react";
 
-function BreadCrumb() {
+function BreadCrumb({ title }) {
     return (
         <div className="breadcrumbs-wrapper breadcumbs-bg1">
             <div className="container">
@@ -10,15 +11,14 @@ function BreadCrumb() {
                             <ul>
                                 <li>
                                     <div className="breadcrumbs-icon1">
-                                        <a
-                                            href="index.html"
-                                            title="Return to home"
-                                        >
-                                            <i className="fa fa-home" />
-                                        </a>
+                                        <Link href="/">
+                                            <a title="Return to home">
+                                                <i className="fa fa-home" />
+                                            </a>
+                                        </Link>
                                     </div>
                                 </li>
-                                <li>Shop</li>
+                                <li>{title}</li>
                             </ul>
                         </div>
                     </div>

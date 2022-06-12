@@ -1,3 +1,4 @@
+import App from "next/app";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 // import "../public/css/bootstrap.min.css";
@@ -5,14 +6,35 @@ import Head from "next/head";
 import Script from "next/script";
 import { StoreProvider } from "../context/store-context";
 import { DisplayProvider } from "../context/display-context";
+import { fetchAPI } from "../utils/api";
+import { getStrapiMedia } from "../utils/media";
+import { get } from "lodash";
 // import "../scripts/loader"
 
 function MyApp({ Component, pageProps }) {
+    const { global } = pageProps;
+
+    console.log(global);
+
     return (
         <StoreProvider>
-            <DisplayProvider>
+            <DisplayProvider global={global}>
                 <Layout>
                     <Head>
+                        {get(global, "attributes") && (
+                            <>
+                                <link
+                                    rel="shortcut icon"
+                                    href={getStrapiMedia(
+                                        get(global, "attributes.favicon")
+                                    )}
+                                />
+                                <title>
+                                    {get(global, "attributes.site_name")}
+                                </title>
+                            </>
+                        )}
+
                         <link rel="stylesheet" href="/css/bootstrap.min.css" />
                         <link rel="stylesheet" href="/css/animate.css" />
                         <link rel="stylesheet" href="/css/jquery-ui.min.css" />
@@ -85,5 +107,17 @@ function MyApp({ Component, pageProps }) {
         </StoreProvider>
     );
 }
+
+MyApp.getInitialProps = async (ctx) => {
+    // Calls page's `getInitialProps` and fills `appProps.pageProps`
+    const appProps = await App.getInitialProps(ctx);
+
+    // Fetch global site settings from Strapi
+    const globalRes = await fetchAPI("/global", {
+        populate: "*",
+    });
+    // Pass the data to our page via props
+    return { ...appProps, pageProps: { global: globalRes.data } };
+};
 
 export default MyApp;

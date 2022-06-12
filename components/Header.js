@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import StoreContext from "../context/store-context";
+import { useRouter } from "next/router";
+import DisplayContext from "../context/display-context";
+import { get } from "lodash";
+import { getStrapiMedia } from "../utils/media";
 
 const routes = [
     {
@@ -22,8 +26,10 @@ const routes = [
 ];
 
 function Header() {
-    const { cart } = useContext(StoreContext);
-    console.log(cart);
+    const router = useRouter();
+
+    const { cart, removeLineItem } = useContext(StoreContext);
+    const { global } = useContext(DisplayContext);
 
     let numItems = 0;
     cart.items.forEach((item) => {
@@ -39,81 +45,28 @@ function Header() {
                             <div className="header-login posr">
                                 <ul>
                                     <li>
-                                        <a href="my-account.html">My Account</a>
-                                    </li>
-                                    <li>
-                                        <a href="wishlist.html">My wishlist</a>
-                                    </li>
-                                    <li>
-                                        <a href="login.html">Login</a>
+                                        <a href="login.html">
+                                            {get(
+                                                global,
+                                                "attributes.contact_info.email"
+                                            )}
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div className="header-currency-area">
+                            <div
+                                className="header-login posr"
+                                style={{
+                                    float: "right",
+                                }}
+                            >
                                 <ul>
                                     <li>
-                                        <div className="header-currency">
-                                            <div className="currency-dd posr">
-                                                <div className="cur-title1 currency-ttl">
-                                                    <div className="cur-usd">
-                                                        <span>
-                                                            Currency : USD
-                                                        </span>
-                                                        <a href="#">
-                                                            <i className="zmdi zmdi-chevron-down" />
-                                                        </a>
-                                                    </div>
-                                                    <div className="cur-text-wrapper cur-cury inner-btn currency-opt">
-                                                        <div className="inner-text">
-                                                            <span className="usd">
-                                                                <a href="#">
-                                                                    Dollar(USD)
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                        <div className="inner-text">
-                                                            <span className="cbp">
-                                                                <a href="#">
-                                                                    Pound(CBP)
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="header-currency">
-                                            <div className="currency-dd posr">
-                                                <div className="cur-title2 currency-ttl">
-                                                    <div className="cur-usd">
-                                                        <span>English</span>
-                                                        <a href="#">
-                                                            <i className="zmdi zmdi-chevron-down" />
-                                                        </a>
-                                                    </div>
-                                                    <div className="cur-text-wrapper cur-lanpos inner-btn2 currency-opt">
-                                                        <div className="inner-text">
-                                                            <span className="usd">
-                                                                <a href="#">
-                                                                    English
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                        <div className="inner-text">
-                                                            <span className="cbp">
-                                                                <a href="#">
-                                                                    Arabic
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <Link href={"/login"}>
+                                            <a>Login</a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -121,17 +74,24 @@ function Header() {
                         <div className="col-md-2 col-sm-2 col-xs-12">
                             <ul className="header-social-icon text-right">
                                 <li>
-                                    <a href="#">
+                                    <a
+                                        target={"_blank"}
+                                        rel="noreferrer"
+                                        href={get(
+                                            global,
+                                            "attributes.contact_info.facebook"
+                                        )}
+                                    >
                                         <i className="fa fa-facebook" />
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <i className="fa fa-twitter" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
+                                    <a
+                                        href={`mailto:${get(
+                                            global,
+                                            "attributes.contact_info.email"
+                                        )}`}
+                                    >
                                         <i className="fa fa-envelope" />
                                     </a>
                                 </li>
@@ -141,7 +101,7 @@ function Header() {
                 </div>
             </div>
             <div className="header-middle">
-                <div className="container">
+                {/* <div className="container">
                     <div className="row">
                         <div className="col-md-3 col-sm-3 col-xs-12">
                             <div className="header-logo">
@@ -157,22 +117,39 @@ function Header() {
                         </div>
                         <div className="col-md-9 col-sm-9 col-xs-12">
                             <div className="header-whishlist">
-                                <div className="header-whish-compare posr">
-                                    <div className="header-whish">
-                                        <a href="wishlist.html">My Wishlist</a>
-                                    </div>
-                                    <div className="header-compare">
-                                        <a href="single-product.html">
-                                            Compare
-                                        </a>
-                                    </div>
-                                </div>
                                 <div className="header-middle-phone">
                                     <span>
                                         <i className="fa fa-phone" />
                                         1-888-123-456-89
                                     </span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+                <div className="container">
+                    <div
+                        className=""
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <div className="">
+                            <div className="header-logo">
+                                <Link href="/">
+                                    <a>
+                                        <img
+                                            src={getStrapiMedia(
+                                                get(
+                                                    global,
+                                                    "attributes.main_logo"
+                                                )
+                                            )}
+                                            alt="domino"
+                                        />
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -186,7 +163,14 @@ function Header() {
                             <nav>
                                 <ul className="main-menu">
                                     {routes.map((route) => (
-                                        <li key={route.path} className="active">
+                                        <li
+                                            key={route.path}
+                                            className={
+                                                router.pathname === route.path
+                                                    ? "active"
+                                                    : ""
+                                            }
+                                        >
                                             <Link href={route.path}>
                                                 <a>{route.name}</a>
                                             </Link>
@@ -222,15 +206,17 @@ function Header() {
                                         </div>
                                     </Link>
                                     <div className="shopping-cart">
-                                        <a href="cart.html">
-                                            <span className="cart-item">
-                                                {numItems} item(s)
-                                            </span>
-                                            <span className="cart-amount">
-                                                {" "}
-                                                - $0.00
-                                            </span>
-                                        </a>
+                                        <Link href="/cart">
+                                            <a>
+                                                <span className="cart-item">
+                                                    {numItems} item(s)
+                                                </span>
+                                                <span className="cart-amount">
+                                                    {" "}
+                                                    - $0.00
+                                                </span>
+                                            </a>
+                                        </Link>
                                     </div>
                                     <div className="header-cart-box-wrapper cart-position-style1">
                                         {cart.items.map((item) => (
@@ -265,7 +251,15 @@ function Header() {
                                                     </div>
                                                 </div>
                                                 <div className="cart-remove deft-remove-icon">
-                                                    <a href="#">
+                                                    <a
+                                                        href="#"
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            removeLineItem(
+                                                                item.id
+                                                            );
+                                                        }}
+                                                    >
                                                         <i className="zmdi zmdi-close" />
                                                     </a>
                                                 </div>

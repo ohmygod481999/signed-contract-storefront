@@ -29,6 +29,9 @@ function Cart() {
     };
 
     useEffect(() => {
+        if (checkoutStep === undefined) {
+            updateCheckoutStep(0);
+        }
         if (checkoutStep === 3) {
             createPaymentSession();
         }
@@ -76,7 +79,7 @@ function Cart() {
     };
     return (
         <div className="mb-75">
-            <BreadCrumb />
+            <BreadCrumb title={"Cart"} />
             <div className="cart-top-heading">
                 <div className="container">
                     <div className="summery-top">

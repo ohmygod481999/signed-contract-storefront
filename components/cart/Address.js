@@ -12,12 +12,9 @@ function Address({ isProcessing, handleShippingSubmit }) {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
         const { email, ...rest } = data;
         handleShippingSubmit(rest, email);
     };
-
-    console.log(cart.region?.countries);
 
     return (
         <div>
