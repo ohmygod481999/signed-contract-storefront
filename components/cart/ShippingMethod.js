@@ -1,5 +1,6 @@
 import React from "react";
 import { formatPrice } from "../../utils/helper-functions";
+import { formatMoney } from "../../utils/utils";
 
 function ShippingMethod({ handleOption, option, chosen }) {
     return (
@@ -27,7 +28,8 @@ function ShippingMethod({ handleOption, option, chosen }) {
                 <p>COD</p>
             </div>
             <div className="checkout-right-item">
-                <p>{formatPrice(option.amount, "đ")}</p>
+                {/* <p>{formatPrice(option.amount, "đ")}</p> */}
+                <p>{formatMoney(option.amount)}</p>
             </div>
         </div>
     );

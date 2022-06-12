@@ -91,7 +91,7 @@ function Slider2({ images }) {
     return (
         <Slider {...settings}>
             {getStrapiMedias(images).map((imageUrl, i) => {
-                if (i >= slideContents.length) return null;
+                // if (i >= slideContents.length) return null;
                 return (
                     <div key={i} className="slider-container">
                         <div
@@ -109,7 +109,7 @@ function Slider2({ images }) {
                             }}
                         >
                             <div className="slider-progress" />
-                            {slideContents[i]}
+                            {/* {slideContents[i]} */}
                         </div>
                     </div>
                 );

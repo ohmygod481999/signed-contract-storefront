@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import DisplayContext from "../context/display-context";
 import { get } from "lodash";
 import { getStrapiMedia } from "../utils/media";
+import { formatMoney } from "../utils/utils";
 
 const routes = [
     {
@@ -34,6 +35,12 @@ function Header() {
     let numItems = 0;
     cart.items.forEach((item) => {
         numItems += item.quantity;
+    });
+
+    let grandTotal = 0;
+
+    cart.items.forEach((item) => {
+        grandTotal += item.quantity * item.unit_price;
     });
 
     return (
@@ -225,9 +232,11 @@ function Header() {
                                                 className="single-cart-box"
                                             >
                                                 <div className="cart-image">
-                                                    <a href="cart.html">
+                                                    <a
+                                                        href={`/product/${item.variant.product.id}`}
+                                                    >
                                                         <img
-                                                            src="images/product/saving-tool.jpg"
+                                                            src={item.thumbnail}
                                                             alt=""
                                                         />
                                                     </a>
@@ -247,7 +256,9 @@ function Header() {
                                                         <span>s, yellow</span>
                                                     </div>
                                                     <div className="cart-price">
-                                                        {item.unit_price}
+                                                        {formatMoney(
+                                                            item.unit_price
+                                                        )}
                                                     </div>
                                                 </div>
                                                 <div className="cart-remove deft-remove-icon">
@@ -263,14 +274,14 @@ function Header() {
                                                         <i className="zmdi zmdi-close" />
                                                     </a>
                                                 </div>
-                                                <div className="cart-shipping-cost">
+                                                {/* <div className="cart-shipping-cost">
                                                     <span className="shipping-text">
                                                         Shipping{" "}
                                                     </span>
                                                     <span className="shipping-amt">
                                                         $7.00
                                                     </span>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         ))}
                                         <div className="clearfix" />
@@ -279,11 +290,11 @@ function Header() {
                                                 Grand total
                                             </span>
                                             <span className="subttl-amt">
-                                                $465.00
+                                                {formatMoney(grandTotal)}
                                             </span>
                                         </div>
                                         <div className="cart-checkout-btn btn-def-checkout">
-                                            <Link href="/checkout">
+                                            <Link href="/cart">
                                                 <a>
                                                     Check out{" "}
                                                     <i className="checkout-dir-icon zmdi zmdi-chevron-right " />

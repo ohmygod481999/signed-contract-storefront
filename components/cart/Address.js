@@ -19,7 +19,13 @@ function Address({ isProcessing, handleShippingSubmit }) {
     return (
         <div>
             <div className="container">
-                <div className="row">
+                <div
+                    className="row"
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                >
                     <div className="col-md-6 col-sm-12 col-xs-12">
                         <div className="account-creation">
                             <div className="lp-title">
@@ -184,7 +190,7 @@ function Address({ isProcessing, handleShippingSubmit }) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6 col-sm-12 col-xs-12">
+                    {/* <div className="col-md-6 col-sm-12 col-xs-12">
                         <div className="account-creation">
                             <div className="lp-title">
                                 <h3>Your billing address</h3>
@@ -206,10 +212,10 @@ function Address({ isProcessing, handleShippingSubmit }) {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-            <div className="address-text-area">
+            {/* <div className="address-text-area">
                 <div className="container">
                     <div className="row">
                         <div className="col-xs-12">
@@ -239,7 +245,7 @@ function Address({ isProcessing, handleShippingSubmit }) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="clearfix" />
         </div>
     );

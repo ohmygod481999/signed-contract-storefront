@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import StoreContext from "../../context/store-context";
+import { formatMoney } from "../../utils/utils";
 
 function CartTable() {
     const { cart, updateLineItem, removeLineItem } = useContext(StoreContext);
@@ -11,6 +12,17 @@ function CartTable() {
             quantity,
         });
     };
+
+    let grandTotal = 0;
+
+    cart.items.forEach((item) => {
+        grandTotal += item.quantity * item.unit_price;
+    });
+
+    let shippingPrice = null;
+    if (cart.shipping_methods && cart.shipping_methods.length > 0) {
+        shippingPrice = cart.shipping_methods[0].price;
+    }
 
     return (
         <div className="cart-table-area">
@@ -146,8 +158,10 @@ function CartTable() {
                                                         />
                                                     </td>
                                                     <td className="td7">
-                                                        {item.unit_price *
-                                                            item.quantity}
+                                                        {formatMoney(
+                                                            item.unit_price *
+                                                                item.quantity
+                                                        )}
                                                     </td>
                                                 </tr>
                                             ))}
@@ -166,7 +180,9 @@ function CartTable() {
                                                             Total products
                                                         </td>
                                                         <td className="td17">
-                                                            $1608.00
+                                                            {formatMoney(
+                                                                grandTotal
+                                                            )}
                                                         </td>
                                                     </tr>
                                                     <tr className="tr5">
@@ -177,7 +193,11 @@ function CartTable() {
                                                             Total shipping
                                                         </td>
                                                         <td className="td19">
-                                                            $7.00
+                                                            {shippingPrice
+                                                                ? formatMoney(
+                                                                      shippingPrice
+                                                                  )
+                                                                : "N/A"}
                                                         </td>
                                                     </tr>
                                                     <tr className="tr6">
@@ -188,7 +208,12 @@ function CartTable() {
                                                             Total
                                                         </td>
                                                         <td className="td21">
-                                                            $1615.00
+                                                            {formatMoney(
+                                                                grandTotal +
+                                                                    (shippingPrice
+                                                                        ? shippingPrice
+                                                                        : 0)
+                                                            )}
                                                         </td>
                                                     </tr>
                                                 </>
