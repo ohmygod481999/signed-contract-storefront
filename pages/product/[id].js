@@ -1,29 +1,40 @@
 import { useRouter } from "next/router";
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import BreadCrumb from "../../components/BreadCrumb";
 import StoreContext from "../../context/store-context";
 import { createClient } from "../../utils/client";
 import { get } from "lodash";
-import { formatMoney, getVnProductPrice } from "../../utils/utils";
+import {
+    formatMoney,
+    getPriceFromOption,
+    getVariantFromOption,
+    getVnProductPrice,
+    getVnProductPrices,
+} from "../../utils/utils";
 
 function Product({ product }) {
     const { addVariantToCart } = useContext(StoreContext);
     const router = useRouter();
     const [tab, setTab] = useState(1);
+    const [currentOption, setCurrentOption] = useState(null);
+    const currentVariant = useMemo(
+        () => getVariantFromOption(product, currentOption || {}),
+        [product, currentOption]
+    );
 
     const [quantity, setQuantity] = useState(1);
 
     const addToCartHandler = (e) => {
         e.preventDefault();
-        if (product.variants && product.variants.length > 0) {
-            addVariantToCart({
-                variantId: product.variants[0].id,
-                quantity: quantity,
-            });
+        if (!currentVariant) {
+            alert("Vui lòng chọn size");
+            return;
         }
+        addVariantToCart({
+            variantId: currentVariant.id,
+            quantity: quantity,
+        });
     };
-
-    console.log(product);
 
     return (
         <div>
@@ -179,9 +190,21 @@ function Product({ product }) {
                                 <div className="compare-conpart-pm compare-bottom">
                                     <div className="old-new-price">
                                         <span>
-                                            {formatMoney(
-                                                getVnProductPrice(product)
-                                            )}{" "}
+                                            {(function () {
+                                                if (!currentOption)
+                                                    return getVnProductPrices(
+                                                        product
+                                                    );
+                                                const price =
+                                                    getPriceFromOption(
+                                                        product,
+                                                        currentOption || {}
+                                                    );
+                                                if (price)
+                                                    return formatMoney(price);
+                                                return "N/A";
+                                            })()}
+                                            {/* {getPriceFromOption(product, (currentOption || {})) || getVnProductPrices(product)}{" "} */}
                                             <del className="skill-gray">
                                                 {" "}
                                                 $360.00
@@ -264,16 +287,42 @@ function Product({ product }) {
                                             </a>
                                         </li>
                                     </ul>
-                                    <div className="skill-checklist">
-                                        <label htmlFor="skillc">
-                                            <span className="italic">Size</span>
-                                        </label>
-                                        <select id="skillc">
-                                            <option value>S</option>
-                                            <option value>M</option>
-                                            <option value>L</option>
-                                        </select>
-                                    </div>
+                                    {product.options.map((option) => (
+                                        <div
+                                            className="skill-checklist"
+                                            key={option.id}
+                                        >
+                                            <label htmlFor="skillc">
+                                                <span className="italic">
+                                                    {option.title}
+                                                </span>
+                                            </label>
+                                            <select
+                                                id="skillc"
+                                                onChange={(e) =>
+                                                    setCurrentOption({
+                                                        ...(currentOption ||
+                                                            {}),
+                                                        [option.id]:
+                                                            e.target.value !==
+                                                            "-"
+                                                                ? e.target.value
+                                                                : null,
+                                                    })
+                                                }
+                                            >
+                                                <option value={null}>-</option>
+                                                {option.values.map((value) => (
+                                                    <option
+                                                        key={value.id}
+                                                        value={value.id}
+                                                    >
+                                                        {value.value}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    ))}
                                 </div>
                                 {/* <div className="color-instock">
                                     <div className="skill-colors">

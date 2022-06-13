@@ -78,7 +78,11 @@ function CartTable() {
                                                     <td className="td1">
                                                         <a href="single-product.html">
                                                             <img
-                                                                src="images/product/p1.jpg"
+                                                                src={
+                                                                    item.thumbnail
+                                                                        ? item.thumbnail
+                                                                        : "images/product/p1.jpg"
+                                                                }
                                                                 alt="domino"
                                                             />
                                                         </a>
@@ -86,13 +90,13 @@ function CartTable() {
                                                     <td className="td2">
                                                         <h5>{item.title}</h5>
                                                         <p>
+                                                            {item.variant
+                                                                .title || "N/A"}
+                                                        </p>
+                                                        <p>
                                                             SKU :{" "}
                                                             {item.variant.sku ||
                                                                 "N/A"}
-                                                        </p>
-                                                        <p>
-                                                            {/* Size : S, Color :
-                                                            Yep */}
                                                         </p>
                                                     </td>
                                                     <td className="td3">

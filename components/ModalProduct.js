@@ -1,24 +1,40 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import StoreContext from "../context/store-context";
-import { formatMoney, getVnProductPrice } from "../utils/utils";
+import {
+    formatMoney,
+    getPriceFromOption,
+    getVariantFromOption,
+    getVnProductPrice,
+    getVnProductPrices,
+} from "../utils/utils";
 
 function ModalProduct({ isActive, setActive, product }) {
     const { addVariantToCart, cart } = useContext(StoreContext);
     const [quantity, setQuantity] = useState(1);
 
+    const [currentOption, setCurrentOption] = useState(null);
+    const currentVariant = useMemo(
+        () =>
+            product ? getVariantFromOption(product, currentOption || {}) : null,
+        [product, currentOption]
+    );
+
     useEffect(() => {
         setQuantity(1);
+        setCurrentOption(null);
     }, [product]);
 
     const handleAddToCart = () => {
-        if (product.variants && product.variants.length > 0) {
-            addVariantToCart({
-                variantId: product.variants[0].id,
-                quantity: parseInt(quantity),
-            });
+        if (!currentVariant) {
+            alert("Vui lòng chọn size");
+            return;
         }
-        // if (product) setOptions(resetOptions(product));
+
+        addVariantToCart({
+            variantId: currentVariant.id,
+            quantity: parseInt(quantity),
+        });
     };
 
     return (
@@ -112,11 +128,26 @@ function ModalProduct({ isActive, setActive, product }) {
                                             <div className="s-price-box">
                                                 {" "}
                                                 <span className="new-price">
-                                                    {formatMoney(
-                                                        getVnProductPrice(
-                                                            product
-                                                        )
-                                                    )}
+                                                    {(function () {
+                                                        if (!currentOption)
+                                                            return getVnProductPrices(
+                                                                product
+                                                            );
+                                                        const price =
+                                                            getPriceFromOption(
+                                                                product,
+                                                                currentOption ||
+                                                                    {}
+                                                            );
+                                                        if (price)
+                                                            return formatMoney(
+                                                                price
+                                                            );
+                                                        return "N/A";
+                                                    })()}
+                                                    {/* {getVnProductPrices(
+                                                        product
+                                                    )} */}
                                                 </span>{" "}
                                                 <span className="old-price">
                                                     $190.00
@@ -124,12 +155,49 @@ function ModalProduct({ isActive, setActive, product }) {
                                             </div>
                                         </div>{" "}
                                         <Link href={`/product/${product.id}`}>
-                                            <a
-                                                className="see-all"
-                                            >
+                                            <a className="see-all">
                                                 See all features
                                             </a>
                                         </Link>
+                                        {product.options.map((option) => (
+                                            <div className="" key={option.id}>
+                                                <label htmlFor="skillc">
+                                                    <span className="italic">
+                                                        {option.title}
+                                                    </span>
+                                                </label>
+                                                <select
+                                                    id="skillc"
+                                                    onChange={(e) =>
+                                                        setCurrentOption({
+                                                            ...(currentOption ||
+                                                                {}),
+                                                            [option.id]:
+                                                                e.target
+                                                                    .value !==
+                                                                "-"
+                                                                    ? e.target
+                                                                          .value
+                                                                    : null,
+                                                        })
+                                                    }
+                                                >
+                                                    <option value={null}>
+                                                        -
+                                                    </option>
+                                                    {option.values.map(
+                                                        (value) => (
+                                                            <option
+                                                                key={value.id}
+                                                                value={value.id}
+                                                            >
+                                                                {value.value}
+                                                            </option>
+                                                        )
+                                                    )}
+                                                </select>
+                                            </div>
+                                        ))}
                                         <div className="quick-add-to-cart">
                                             <div className="cart">
                                                 <div className="numbers-row">

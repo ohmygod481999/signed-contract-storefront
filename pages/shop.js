@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import BreadCrumb from "../components/BreadCrumb";
 import ModalProduct from "../components/ModalProduct";
 import ProductCard from "../components/ProductCard";
+import ProductCard2 from "../components/ProductCard2";
 import { createClient } from "../utils/client";
 
 export default function Shop({ products }) {
@@ -16,7 +17,7 @@ export default function Shop({ products }) {
 
     return (
         <div className="hair-main-wrapper">
-            <Banner />
+            {/* <Banner /> */}
             <BreadCrumb title={"Shop"} />
 
             <ModalProduct
@@ -194,134 +195,11 @@ export default function Shop({ products }) {
                                         id="productList"
                                     >
                                         {products.map((product) => (
-                                            <div
+                                            <ProductCard2
+                                                toggleModal={toggleModal}
+                                                product={product}
                                                 key={product.id}
-                                                className="tab-content-wrapper tab-listview"
-                                            >
-                                                <div className="row">
-                                                    <div className="col-md-4 col-sm-6 col-xs-12">
-                                                        <ProductCard
-                                                            product={product}
-                                                            toggleModal={
-                                                                toggleModal
-                                                            }
-                                                            isHaveBottom={false}
-                                                        />
-                                                    </div>
-                                                    <div className="col-md-8 col-sm-12 col-xs-12">
-                                                        <div className="compare-content-wrap">
-                                                            <div className="cmain-heading cmain-heading-tab2">
-                                                                <h3>
-                                                                    {product.title}
-                                                                </h3>
-                                                            </div>
-                                                            <div className="compare-conpart">
-                                                                <div className="compare-social">
-                                                                    <div className="compare-social">
-                                                                        <button className=" btn btn-default com-tw">
-                                                                            <i className="fa fa-twitter" />{" "}
-                                                                            Twitter
-                                                                        </button>
-                                                                        <button className=" btn btn-default com-fb">
-                                                                            <i className="fa fa-facebook" />{" "}
-                                                                            Share
-                                                                        </button>
-                                                                        <button className="btn btn-default com-gp">
-                                                                            <i className="fa fa-google-plus" />{" "}
-                                                                            Google
-                                                                            +
-                                                                        </button>
-                                                                        <button className=" btn btn-default com-pi">
-                                                                            <i className="fa fa-pinterest" />{" "}
-                                                                            Pinterest
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="skill-rating skill-rating-tab2">
-                                                                    <div className="rating-text">
-                                                                        <span>
-                                                                            Rating
-                                                                        </span>
-                                                                    </div>
-                                                                    <ul className="skill-star-rating">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i className="fa fa-star" />
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i className="fa fa-star" />
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i className="fa fa-star" />
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i className="fa fa-star" />
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i className="fa fa-star" />
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div className="compare-conpart">
-                                                                <div className="skill-long-text">
-                                                                    <p>
-                                                                        {product.description}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="compare-conpart-pm compare-tab2">
-                                                                <div className="old-new-price">
-                                                                    <span>
-                                                                        $342.00{" "}
-                                                                        <del className="skill-gray">
-                                                                            {" "}
-                                                                            $360.00
-                                                                        </del>
-                                                                    </span>
-                                                                </div>
-                                                                <div className="plus-minus-text">
-                                                                    Quantity
-                                                                </div>
-                                                                <div className="skill-plusminus-wrap">
-                                                                    <div className="skill-plusminus">
-                                                                        <div className="skill-minus qtybutton">
-                                                                            -
-                                                                        </div>
-                                                                        <input
-                                                                            type="text"
-                                                                            name="#"
-                                                                            defaultValue={
-                                                                                1
-                                                                            }
-                                                                            className="cart-plus-minus-box"
-                                                                        />
-                                                                        <div className="skill-plus qtybutton">
-                                                                            +
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="skill-cart-option skill-sep posr">
-                                                                    <a href="cart.html">
-                                                                        <i className="fa fa-shopping-cart" />{" "}
-                                                                        Add to
-                                                                        cart
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            />
                                         ))}
                                     </div>
                                 </div>

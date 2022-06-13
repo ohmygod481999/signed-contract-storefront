@@ -43,6 +43,8 @@ function Header() {
         grandTotal += item.quantity * item.unit_price;
     });
 
+    console.log("cart", cart)
+
     return (
         <div className="header-area">
             <div className="header-topbar-area-top">
@@ -253,7 +255,7 @@ function Header() {
                                                         </a>
                                                     </div>
                                                     <div className="cart-dress-color">
-                                                        <span>s, yellow</span>
+                                                        <span>{item.variant.title}</span>
                                                     </div>
                                                     <div className="cart-price">
                                                         {formatMoney(

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import StoreContext from "../context/store-context";
-import { formatMoney, getVnProductPrice } from "../utils/utils";
+import {
+    formatMoney,
+    getVnProductPrice,
+    getVnProductPrices,
+} from "../utils/utils";
 
 function ProductCard({ product, toggleModal, isHaveBottom = true }) {
     const { addVariantToCart, cart } = useContext(StoreContext);
@@ -38,7 +42,7 @@ function ProductCard({ product, toggleModal, isHaveBottom = true }) {
                     </div>
                     <div className="product-inner-text">
                         <div className="product-social-icon social-icon">
-                            <ul>
+                            {/* <ul>
                                 <li>
                                     <a href="#cart" onClick={handleAddToCart}>
                                         <i className="fa fa-shopping-cart" />
@@ -54,7 +58,7 @@ function ProductCard({ product, toggleModal, isHaveBottom = true }) {
                                         <i className="fa fa-refresh" />
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> */}
                         </div>
                         <div className="product-btn">
                             <div className="product-qview-search">
@@ -104,12 +108,16 @@ function ProductCard({ product, toggleModal, isHaveBottom = true }) {
                 {isHaveBottom && (
                     <div className="product-bottom-text posr">
                         <div className="product-bottom-title deft-underline2">
-                            <a title={title}>
-                                <h4>{title}</h4>
-                            </a>
+                            <Link href={`/product/${product.id}`}>
+                                <a title={title}>
+                                    <h4>{title}</h4>
+                                </a>
+                            </Link>
                         </div>
                         <div className="product-bottom-price">
-                            <span>{formatMoney(getVnProductPrice(product))}</span> <del>$300.00</del>
+                            <span>{getVnProductPrices(product)}</span>{" "}
+                            <del>$300.00</del>
+                            {/* <span>{formatMoney(getVnProductPrice(product))}</span> <del>$300.00</del> */}
                         </div>
                     </div>
                 )}
