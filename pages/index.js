@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
+import Banner2 from "../components/Banner2";
 import Brand from "../components/Brand";
 import DiscountArea from "../components/DiscountArea";
 import FreeOffer from "../components/FreeOffer";
@@ -20,10 +21,11 @@ export default function Home({ products, home }) {
     return (
         <div>
             <Slider2 images={home.attributes.main_slides}/>
-            <FreeOffer content={home.attributes.three_content}/>
+            <Banner2 image={home.attributes.banner}/>
+            {/* <FreeOffer content={home.attributes.three_content}/> */}
             {/* <DiscountArea /> */}
             <ProductArea products={products} />
-            {/* <Brand /> */}
+            <Brand />
         </div>
     );
 }

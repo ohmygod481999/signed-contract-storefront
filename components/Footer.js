@@ -1,6 +1,12 @@
-import React from "react";
+import Link from "next/link";
+import React, { useContext } from "react";
+import { getStrapiMedia } from "../utils/media";
+import { get } from "lodash";
+import DisplayContext from "../context/display-context";
 
 function Footer() {
+    const { global } = useContext(DisplayContext);
+
     return (
         <div className="main-footer-area">
             <div className="container">
@@ -12,7 +18,24 @@ function Footer() {
                                     id="f-about"
                                     className="footer-title def-funderline ftitle-about posr"
                                 >
-                                    <h5 className="active-about">About us</h5>
+                                    <div className="">
+                                        <Link href="/">
+                                            <a>
+                                                <img
+                                                    style={{
+                                                        width: "75px",
+                                                    }}
+                                                    src={getStrapiMedia(
+                                                        get(
+                                                            global,
+                                                            "attributes.secondary_logo"
+                                                        )
+                                                    )}
+                                                    alt="domino"
+                                                />
+                                            </a>
+                                        </Link>
+                                    </div>
                                 </div>
                                 <div className="footer-text">
                                     <p>
@@ -99,49 +122,6 @@ function Footer() {
                     <div className="col-md-2 col-sm-6 col-xs-12">
                         <div className="footer-list-wrapper">
                             <div
-                                id="f-myac"
-                                className="footer-title def-funderline ftitle-myA posr"
-                            >
-                                <h5 className="active">My account</h5>
-                            </div>
-                            <ul className="footer-list-text jscroll-myac">
-                                <li>
-                                    <a href="my-account.html" title="My orders">
-                                        My orders{" "}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="my-account.html"
-                                        title="My credit slips"
-                                    >
-                                        My credit slips{" "}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index2.html" title="My addresses">
-                                        My addresses
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html" title="Specials">
-                                        Specials
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="my-account.html"
-                                        title="My personal info"
-                                    >
-                                        My personal info
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="col-md-2 col-sm-6 col-xs-12">
-                        <div className="footer-list-wrapper">
-                            <div
                                 id="f-cussve"
                                 className="footer-title def-funderline def-funderline2 ftitle-cus posr"
                             >
@@ -150,30 +130,22 @@ function Footer() {
                             <ul className="footer-list-text jscroll-cussrve">
                                 <li>
                                     <a href="contact.html" title="Contact us">
-                                        Contact us
+                                        Chính sách mua hàng
                                     </a>
                                 </li>
                                 <li>
                                     <a href="index2.html" title="Discount">
-                                        Discount
+                                        Chính sách đổi trả
                                     </a>
                                 </li>
                                 <li>
                                     <a href="index2.html" title="Site map">
-                                        Site map
+                                        Chính sách bảo hành
                                     </a>
                                 </li>
                                 <li>
                                     <a href="about.html" title="About us">
-                                        About us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="contact.html"
-                                        title="Custom service"
-                                    >
-                                        Custom service
+                                        Chính sách khách hàng thân thiết
                                     </a>
                                 </li>
                             </ul>

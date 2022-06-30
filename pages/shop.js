@@ -18,7 +18,7 @@ export default function Shop({ products }) {
     return (
         <div className="hair-main-wrapper">
             {/* <Banner /> */}
-            <BreadCrumb title={"Shop"} />
+            {/* <BreadCrumb title={"Shop"} /> */}
 
             <ModalProduct
                 isActive={isActive}
@@ -35,7 +35,7 @@ export default function Shop({ products }) {
                 >
                     <div className="row">
                         <div className="col-xs-12">
-                            <div className="top-full-tarea">
+                            {/* <div className="top-full-tarea">
                                 <div className="full-ttlleft">
                                     <p>Shop</p>
                                 </div>
@@ -44,7 +44,7 @@ export default function Shop({ products }) {
                                         <p>There are 13 products.</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="clearfix" />
                             <div className="mainshop-area">
                                 <div className="mainshop-top">
@@ -87,10 +87,10 @@ export default function Shop({ products }) {
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div className="sproduct-short">
+                                                {/* <div className="sproduct-short">
                                                     <div className="top-product-short">
                                                         <label htmlFor="viewby">
-                                                            Short By
+                                                            Sort By
                                                         </label>
                                                         <select
                                                             name="#"
@@ -123,12 +123,12 @@ export default function Shop({ products }) {
                                                             </option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                         <div className="col-md-4 col-sm-4 col-xs-12">
                                             <div className="category-short">
-                                                <div className="quantity-short">
+                                                {/* <div className="quantity-short">
                                                     <label htmlFor="viewby5">
                                                         Show
                                                         <select
@@ -144,11 +144,11 @@ export default function Shop({ products }) {
                                                         </select>
                                                         Per Page
                                                     </label>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                         <div className="col-md-3 col-sm-3 col-xs-12">
-                                            <div className="compare-items">
+                                            {/* <div className="compare-items">
                                                 <a href="compare.html">
                                                     <span>
                                                         Compare (0){" "}
@@ -158,7 +158,7 @@ export default function Shop({ products }) {
                                                         />
                                                     </span>
                                                 </a>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>

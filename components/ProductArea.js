@@ -31,19 +31,19 @@ function ProductArea({ products }) {
                                         alt=""
                                     />
                                 </div>
-                                <div className="product-tab-cat">
+                                {/* <div className="product-tab-cat">
                                     <ul className="nav-tab" role="tablist">
                                         <li
                                             role="presentation"
                                             className="active"
                                         >
                                             <a
-                                                href="#newArrival"
-                                                aria-controls="newArrival"
+                                                href="#allProduct"
+                                                aria-controls="allProduct"
                                                 role="tab"
                                                 data-toggle="tab"
                                             >
-                                                New Arrival
+                                                All Product
                                             </a>
                                         </li>
                                         <li role="presentation">
@@ -67,7 +67,7 @@ function ProductArea({ products }) {
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="clearfix" />
@@ -76,7 +76,7 @@ function ProductArea({ products }) {
                                 <div
                                     role="tabpanel"
                                     className="tab-pane active"
-                                    id="newArrival"
+                                    id="allProduct"
                                 >
                                     <div className="active-owl-product def-owl">
                                         {(products || []).map((product) => (

@@ -38,7 +38,7 @@ function Product({ product }) {
 
     return (
         <div>
-            <BreadCrumb title={product.title} />
+            {/* <BreadCrumb title={product.title} /> */}
             <div className="compare-area compare-single-productt mb-75">
                 <div className="container">
                     <div className="row">
@@ -117,75 +117,13 @@ function Product({ product }) {
                         <div className="col-md-6 col-sm-12 col-xs-12">
                             <div className="compare-content-wrap">
                                 <div className="cmain-heading text-uppercase">
-                                    <h3>{product.title}</h3>
-                                </div>
-                                <div className="compare-conpart compare-single-mgr">
-                                    <div className="compare-social">
-                                        <div className="compare-social">
-                                            <button className=" btn btn-default com-tw">
-                                                <i className="fa fa-twitter" />{" "}
-                                                Twitter
-                                            </button>
-                                            <button className=" btn btn-default com-fb">
-                                                <i className="fa fa-facebook" />{" "}
-                                                Share
-                                            </button>
-                                            <button className="btn btn-default com-gp">
-                                                <i className="fa fa-google-plus" />{" "}
-                                                Google +
-                                            </button>
-                                            <button className=" btn btn-default com-pi">
-                                                <i className="fa fa-pinterest" />{" "}
-                                                Pinterest
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="skill-rating">
-                                        <div className="rating-text">
-                                            <span>Rating</span>
-                                        </div>
-                                        <ul className="skill-star-rating">
-                                            <li>
-                                                <a href="#">
-                                                    <i className="fa fa-star" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i className="fa fa-star" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i className="fa fa-star" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i className="fa fa-star" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i className="fa fa-star" />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="skill-referance">
-                                        <p> Reference: demo_12</p>
-                                        <p>
-                                            <span className="italic">
-                                                Condition:
-                                            </span>{" "}
-                                            New product
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="compare-conpart compare-conpart-text">
-                                    <div className="skill-long-text">
-                                        <p>{product.description}</p>
-                                    </div>
+                                    <h3
+                                        style={{
+                                            fontWeight: 700,
+                                        }}
+                                    >
+                                        {product.title}
+                                    </h3>
                                 </div>
                                 <div className="compare-conpart-pm compare-bottom">
                                     <div className="old-new-price">
@@ -205,11 +143,55 @@ function Product({ product }) {
                                                 return "N/A";
                                             })()}
                                             {/* {getPriceFromOption(product, (currentOption || {})) || getVnProductPrices(product)}{" "} */}
-                                            <del className="skill-gray">
+                                            {/* <del className="skill-gray">
                                                 {" "}
                                                 $360.00
-                                            </del>
+                                            </del> */}
                                         </span>
+                                    </div>
+                                    <div className="product-variant">
+                                        {product.options.map((option) => (
+                                            <div
+                                                className="skill-checklist"
+                                                key={option.id}
+                                            >
+                                                <label htmlFor="skillc">
+                                                    <span className="italic">
+                                                        {option.title}
+                                                    </span>
+                                                </label>
+                                                <select
+                                                    id="skillc"
+                                                    onChange={(e) =>
+                                                        setCurrentOption({
+                                                            ...(currentOption ||
+                                                                {}),
+                                                            [option.id]:
+                                                                e.target
+                                                                    .value !==
+                                                                "-"
+                                                                    ? e.target
+                                                                          .value
+                                                                    : null,
+                                                        })
+                                                    }
+                                                >
+                                                    <option value={null}>
+                                                        -
+                                                    </option>
+                                                    {option.values.map(
+                                                        (value) => (
+                                                            <option
+                                                                key={value.id}
+                                                                value={value.id}
+                                                            >
+                                                                {value.value}
+                                                            </option>
+                                                        )
+                                                    )}
+                                                </select>
+                                            </div>
+                                        ))}
                                     </div>
                                     <div className="plus-minus-text">
                                         Quantity
@@ -266,63 +248,36 @@ function Product({ product }) {
                                         </a>
                                     </div>
                                 </div>
-                                <div className="compare-conpart skill-communicate">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i className="fa fa-envelope" />{" "}
-                                                Send to a friend
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i className="fa fa-print" />{" "}
-                                                Print
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i className="fa fa-heart-o" />{" "}
-                                                Add to wishlist
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    {product.options.map((option) => (
-                                        <div
-                                            className="skill-checklist"
-                                            key={option.id}
-                                        >
-                                            <label htmlFor="skillc">
-                                                <span className="italic">
-                                                    {option.title}
-                                                </span>
-                                            </label>
-                                            <select
-                                                id="skillc"
-                                                onChange={(e) =>
-                                                    setCurrentOption({
-                                                        ...(currentOption ||
-                                                            {}),
-                                                        [option.id]:
-                                                            e.target.value !==
-                                                            "-"
-                                                                ? e.target.value
-                                                                : null,
-                                                    })
-                                                }
-                                            >
-                                                <option value={null}>-</option>
-                                                {option.values.map((value) => (
-                                                    <option
-                                                        key={value.id}
-                                                        value={value.id}
-                                                    >
-                                                        {value.value}
-                                                    </option>
-                                                ))}
-                                            </select>
+                                <div className="compare-conpart compare-conpart-text">
+                                    <div className="skill-long-text">
+                                        <p>{product.description}</p>
+                                    </div>
+                                </div>
+                                <div
+                                    style={{
+                                        marginTop: "30px",
+                                    }}
+                                >
+                                    <div className="compare-social">
+                                        <div className="compare-social">
+                                            <button className=" btn btn-default com-tw">
+                                                <i className="fa fa-twitter" />{" "}
+                                                Twitter
+                                            </button>
+                                            <button className=" btn btn-default com-fb">
+                                                <i className="fa fa-facebook" />{" "}
+                                                Share
+                                            </button>
+                                            <button className="btn btn-default com-gp">
+                                                <i className="fa fa-google-plus" />{" "}
+                                                Google +
+                                            </button>
+                                            <button className=" btn btn-default com-pi">
+                                                <i className="fa fa-pinterest" />{" "}
+                                                Pinterest
+                                            </button>
                                         </div>
-                                    ))}
+                                    </div>
                                 </div>
                                 {/* <div className="color-instock">
                                     <div className="skill-colors">

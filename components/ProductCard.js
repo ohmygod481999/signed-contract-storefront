@@ -26,7 +26,7 @@ function ProductCard({ product, toggleModal, isHaveBottom = true }) {
         <div className="single-product">
             <div className="product-wrapper posr">
                 <div className="product-label">
-                    <div className="label-sale">Sale</div>
+                    {/* <div className="label-sale">Sale</div> */}
                 </div>
                 <div className="priduct-img-wrapper posr">
                     <div className="product-img">
@@ -69,8 +69,8 @@ function ProductCard({ product, toggleModal, isHaveBottom = true }) {
                                     href="#"
                                     onClick={() => toggleModal(product)}
                                 >
-                                    <i className=" product-search fa fa-search" />{" "}
-                                    quick View
+                                    {/* <i className=" product-search fa fa-search" />{" "} */}
+                                    Order now
                                 </a>
                             </div>
                         </div>
@@ -116,7 +116,7 @@ function ProductCard({ product, toggleModal, isHaveBottom = true }) {
                         </div>
                         <div className="product-bottom-price">
                             <span>{getVnProductPrices(product)}</span>{" "}
-                            <del>$300.00</del>
+                            {/* <del>$300.00</del> */}
                             {/* <span>{formatMoney(getVnProductPrice(product))}</span> <del>$300.00</del> */}
                         </div>
                     </div>

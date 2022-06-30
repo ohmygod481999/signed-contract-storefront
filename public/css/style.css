@@ -60,6 +60,16 @@ CSS INDEX
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300i,400,500,700");
 
+@font-face {
+    font-family: CocogooseLight;
+    src: url("/fonts/Cocogoose Pro Light-trial.ttf");
+  }
+
+@font-face {
+    font-family: CocogooseSemiLight;
+    src: url("/fonts/Cocogoose Pro Semilight-trial.ttf");
+  }
+
 html,
 body {
     font-family: "Roboto", sans-serif;
@@ -120,7 +130,8 @@ h4,
 h5,
 h6,
 a {
-    font-family: "Montserrat", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
+    font-family: CocogooseSemiLight;
 
     margin: 0 0 10px;
 }
@@ -831,7 +842,7 @@ nav ul.main-menu {
 .header-cart-area {
     float: right;
 
-    width: 90%;
+    width: 100px;
 
     text-align: right;
 }
@@ -845,7 +856,7 @@ nav ul.main-menu {
 }
 
 .main-cart-area {
-    padding-top: 17px;
+    /* padding-top: 17px; */
 }
 
 .sticky .main-cart-area {
@@ -964,19 +975,6 @@ nav ul.main-menu {
 
     content: "";
     cursor: pointer;
-}
-
-.style-shopping-bag:after {
-    position: absolute;
-    top: 2px;
-    left: 94px;
-
-    width: 1px;
-    height: 33px;
-
-    content: "";
-
-    background: #CCC none repeat scroll 0 0;
 }
 
 /* Header Cart box start*/
@@ -3994,7 +3992,7 @@ nav ul.main-menu {
 }
 
 .mainshop-area li.active i {
-    background: #A08D7C;
+    background: #000000;
 }
 
 .main-shop-area .mainshop-top {
@@ -6185,7 +6183,7 @@ button.btn.btn-default a {
 
     color: #FFF;
     border: 1px solid #A08D7C;
-    background: #A08D7C;
+    background: #555555;
 }
 
 .skill-cart-option a:hover {
@@ -7485,4 +7483,13 @@ p.error {
     padding: 95px 0;
 
     background-color: #F5F5F5;
+}
+
+/* My styles */
+.product-variant {
+    margin-bottom: 20px;
+}
+
+.product-variant label {
+    margin-right: 10px;
 }

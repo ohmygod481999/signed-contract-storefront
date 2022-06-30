@@ -17,8 +17,12 @@ const routes = [
         path: "/shop",
     },
     {
-        name: "About us",
+        name: "Brochure",
         path: "/about",
+    },
+    {
+        name: "Retailers",
+        path: "/retailers",
     },
     {
         name: "Contact",
@@ -43,7 +47,7 @@ function Header() {
         grandTotal += item.quantity * item.unit_price;
     });
 
-    console.log("cart", cart)
+    console.log("cart", cart);
 
     return (
         <div className="header-area">
@@ -51,37 +55,7 @@ function Header() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 col-sm-4 col-xs-12">
-                            <div className="header-login posr">
-                                <ul>
-                                    <li>
-                                        <a href="login.html">
-                                            {get(
-                                                global,
-                                                "attributes.contact_info.email"
-                                            )}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-sm-6 col-xs-12">
-                            <div
-                                className="header-login posr"
-                                style={{
-                                    float: "right",
-                                }}
-                            >
-                                <ul>
-                                    <li>
-                                        <Link href={"/login"}>
-                                            <a>Login</a>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-md-2 col-sm-2 col-xs-12">
-                            <ul className="header-social-icon text-right">
+                            <ul className="header-social-icon text-left">
                                 <li>
                                     <a
                                         target={"_blank"}
@@ -106,11 +80,21 @@ function Header() {
                                 </li>
                             </ul>
                         </div>
+                        <div className="col-md-6 col-sm-6 col-xs-12"></div>
+                        <div className="col-md-2 col-sm-2 col-xs-12">
+                            <ul className="header-login posr text-right">
+                                <li>
+                                    <Link href={"/login"}>
+                                        <a>Login</a>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="header-middle">
-                {/* <div className="container">
+            {/* <div className="header-middle">
+                <div className="container">
                     <div className="row">
                         <div className="col-md-3 col-sm-3 col-xs-12">
                             <div className="header-logo">
@@ -135,7 +119,7 @@ function Header() {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
                 <div className="container">
                     <div
                         className=""
@@ -149,6 +133,9 @@ function Header() {
                                 <Link href="/">
                                     <a>
                                         <img
+                                            style={{
+                                                width: "100px"
+                                            }}
                                             src={getStrapiMedia(
                                                 get(
                                                     global,
@@ -163,14 +150,27 @@ function Header() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/*header main menu start*/}
             <div id="sticky-header" className="main-menu-wrapper hp1-menu">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-9 col-sm-10 hidden-xs">
+                    <div
+                        className="row"
+                        style={{
+                            alignItems: "center",
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <div className="col-md-5 col-sm-10 hidden-xs">
                             <nav>
-                                <ul className="main-menu">
+                                <ul
+                                    className="main-menu"
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                    }}
+                                >
                                     {routes.map((route) => (
                                         <li
                                             key={route.path}
@@ -188,8 +188,40 @@ function Header() {
                                 </ul>
                             </nav>
                         </div>
-                        <div className="col-md-3 col-sm-2 col-xs-12">
-                            <div className="main-cart-area  cart-sticky-display posr">
+                        <div className="col-md-2">
+                            <div
+                                className="header-logo"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <Link href="/">
+                                    <a>
+                                        <img
+                                            style={{
+                                                width: "75px",
+                                            }}
+                                            src={getStrapiMedia(
+                                                get(
+                                                    global,
+                                                    "attributes.main_logo"
+                                                )
+                                            )}
+                                            alt="domino"
+                                        />
+                                    </a>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="col-md-5 col-sm-10 hidden-xs">
+                            <div
+                                className="main-cart-area cart-sticky-display posr"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                }}
+                            >
                                 <div className="header-search header-search-position posr">
                                     <form action="#">
                                         <input
@@ -205,16 +237,16 @@ function Header() {
                                 <div className="header-cart-area cart-hover-effect">
                                     <Link href="/cart">
                                         <div className="shopping-cart style-shopping-bag strong-up">
-                                            <a>
+                                            {/* <a>
                                                 <span>
                                                     <strong>
                                                         Shopping cart
                                                     </strong>
                                                 </span>
-                                            </a>
+                                            </a> */}
                                         </div>
                                     </Link>
-                                    <div className="shopping-cart">
+                                    {/* <div className="shopping-cart">
                                         <Link href="/cart">
                                             <a>
                                                 <span className="cart-item">
@@ -226,7 +258,7 @@ function Header() {
                                                 </span>
                                             </a>
                                         </Link>
-                                    </div>
+                                    </div> */}
                                     <div className="header-cart-box-wrapper cart-position-style1">
                                         {cart.items.map((item) => (
                                             <div
@@ -255,7 +287,9 @@ function Header() {
                                                         </a>
                                                     </div>
                                                     <div className="cart-dress-color">
-                                                        <span>{item.variant.title}</span>
+                                                        <span>
+                                                            {item.variant.title}
+                                                        </span>
                                                     </div>
                                                     <div className="cart-price">
                                                         {formatMoney(
@@ -276,14 +310,14 @@ function Header() {
                                                         <i className="zmdi zmdi-close" />
                                                     </a>
                                                 </div>
-                                                {/* <div className="cart-shipping-cost">
+                                                <div className="cart-shipping-cost">
                                                     <span className="shipping-text">
                                                         Shipping{" "}
                                                     </span>
                                                     <span className="shipping-amt">
                                                         $7.00
                                                     </span>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         ))}
                                         <div className="clearfix" />

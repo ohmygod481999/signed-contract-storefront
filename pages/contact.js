@@ -40,7 +40,7 @@ export default function Contact() {
 
     return (
         <div className="subpage-main-wrapper about-full">
-            <BreadCrumb title={"Contact"} />
+            {/* <BreadCrumb title={"Contact"} /> */}
             <div
                 className="contact-email-area"
                 style={{

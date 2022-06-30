@@ -81,7 +81,7 @@ function ProductCard2({ product, toggleModal, isHaveBottom = true }) {
                                                     toggleModal(product)
                                                 }
                                             >
-                                                <i className=" product-search fa fa-search" />{" "}
+                                                {/* <i className=" product-search fa fa-search" />{" "} */}
                                                 quick View
                                             </a>
                                         </div>
