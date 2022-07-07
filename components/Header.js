@@ -18,11 +18,11 @@ const routes = [
     },
     {
         name: "Brochure",
-        path: "/about",
+        path: "/brochure",
     },
     {
         name: "Retailers",
-        path: "/retailers",
+        path: "/retailer",
     },
     {
         name: "Contact",

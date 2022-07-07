@@ -1,3 +1,11 @@
 .mb-75 {
   margin-bottom: 75px;
 }
+
+.zone {
+  margin-bottom: 40px;
+}
+
+.zone .store {
+  margin-bottom: 20px;
+}
