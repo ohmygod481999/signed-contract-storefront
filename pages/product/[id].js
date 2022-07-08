@@ -16,11 +16,16 @@ function Product({ product }) {
     const { addVariantToCart } = useContext(StoreContext);
     const router = useRouter();
     const [tab, setTab] = useState(1);
-    const [currentOption, setCurrentOption] = useState(null);
+    const [currentOption, setCurrentOption] = useState({
+        [product.options[0].id]: product.options[0].values[0].id
+    });
     const currentVariant = useMemo(
         () => getVariantFromOption(product, currentOption || {}),
         [product, currentOption]
     );
+
+    console.log(product);
+    console.log(currentOption)
 
     const [quantity, setQuantity] = useState(1);
 
@@ -149,50 +154,59 @@ function Product({ product }) {
                                             </del> */}
                                         </span>
                                     </div>
-                                    <div className="product-variant">
-                                        {product.options.map((option) => (
-                                            <div
-                                                className="skill-checklist"
-                                                key={option.id}
-                                            >
-                                                <label htmlFor="skillc">
-                                                    <span className="italic">
-                                                        {option.title}
-                                                    </span>
-                                                </label>
-                                                <select
-                                                    id="skillc"
-                                                    onChange={(e) =>
-                                                        setCurrentOption({
-                                                            ...(currentOption ||
-                                                                {}),
-                                                            [option.id]:
-                                                                e.target
-                                                                    .value !==
-                                                                "-"
-                                                                    ? e.target
-                                                                          .value
-                                                                    : null,
-                                                        })
-                                                    }
+                                    {product.options.length > 1 && (
+                                        <div className="product-variant">
+                                            {product.options.map((option) => (
+                                                <div
+                                                    className="skill-checklist"
+                                                    key={option.id}
                                                 >
-                                                    <option value={null}>
-                                                        -
-                                                    </option>
-                                                    {option.values.map(
-                                                        (value) => (
-                                                            <option
-                                                                key={value.id}
-                                                                value={value.id}
-                                                            >
-                                                                {value.value}
-                                                            </option>
-                                                        )
-                                                    )}
-                                                </select>
-                                            </div>
-                                        ))}
-                                    </div>
+                                                    <label htmlFor="skillc">
+                                                        <span className="italic">
+                                                            {option.title}
+                                                        </span>
+                                                    </label>
+                                                    <select
+                                                        id="skillc"
+                                                        onChange={(e) =>
+                                                            setCurrentOption({
+                                                                ...(currentOption ||
+                                                                    {}),
+                                                                [option.id]:
+                                                                    e.target
+                                                                        .value !==
+                                                                    "-"
+                                                                        ? e
+                                                                              .target
+                                                                              .value
+                                                                        : null,
+                                                            })
+                                                        }
+                                                    >
+                                                        <option value={null}>
+                                                            -
+                                                        </option>
+                                                        {option.values.map(
+                                                            (value) => (
+                                                                <option
+                                                                    key={
+                                                                        value.id
+                                                                    }
+                                                                    value={
+                                                                        value.id
+                                                                    }
+                                                                >
+                                                                    {
+                                                                        value.value
+                                                                    }
+                                                                </option>
+                                                            )
+                                                        )}
+                                                    </select>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                     <div className="plus-minus-text">
                                         Quantity
                                     </div>

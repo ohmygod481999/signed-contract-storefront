@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import StoreContext from "../../context/store-context";
 import CartTable from "./CartTable";
+import CartList from "./CartList";
 
 function Payment() {
     const router = useRouter();
@@ -25,11 +26,12 @@ function Payment() {
         // alert("done");
     };
     return (
-        <div>
-            <CartTable />
-            <div className="payment-confirm-area">
-                <div className="container">
-                    <div className="row">
+        <div className="container">
+            {/* <CartTable /> */}
+            <div className="row">
+                <div className="col-md-6">
+                    <div className="payment-confirm-area">
+                        <h3>Payment methods</h3>
                         {cart &&
                             cart.payment_sessions &&
                             cart.payment_sessions.map((ps) => {
@@ -51,12 +53,12 @@ function Payment() {
                                                     onClick={handlePayment}
                                                 >
                                                     <a href="#">
-                                                        <div className="confirm-left">
+                                                        {/* <div className="confirm-left">
                                                             <img
                                                                 src="images/icons/cheque.png"
                                                                 alt=""
                                                             />
-                                                        </div>
+                                                        </div> */}
                                                         <div className="confirm-middle">
                                                             COD
                                                             <span className="gray-color">
@@ -77,6 +79,9 @@ function Payment() {
                                 }
                             })}
                     </div>
+                </div>
+                <div className="col-md-6">
+                    <CartList />
                 </div>
             </div>
         </div>

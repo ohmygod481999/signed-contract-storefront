@@ -22,10 +22,15 @@ export const Payment = () => {
             <p>Hang on while we validate your payment...</p>
         </div>
     ) : (
-        <div>
+        <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            margin: "30px"
+        }}>
             <div>
                 <h1>Order Summary</h1>
-                <p>Thank you for your order!</p>
+                <p className="text-center">Thank you for your order!</p>
             </div>
             <div>
                 {order.items
@@ -40,7 +45,7 @@ export const Payment = () => {
                     .map((i) => {
                         return (
                             <div key={i.id}>
-                                <div classNam>
+                                <div>
                                     <figure>
                                         <Link
                                             href={{
@@ -52,7 +57,7 @@ export const Payment = () => {
                                             passHref
                                         >
                                             <a>
-                                                <div classNam>
+                                                <div>
                                                     {/* <Image
                           objectFit="cover"
                           height="100%"
@@ -64,7 +69,7 @@ export const Payment = () => {
                                             </a>
                                         </Link>
                                     </figure>
-                                    <div classNam>
+                                    <div>
                                         <div>
                                             <div>
                                                 <Link
@@ -79,17 +84,17 @@ export const Payment = () => {
                                                 >
                                                     <a>{i.title}</a>
                                                 </Link>
-                                                <p classNam>
+                                                <p>
                                                     Size: {i.variant.title}
                                                 </p>
-                                                <p classNam>
+                                                <p>
                                                     Price:{" "}
                                                     {formatPrice(
                                                         i.unit_price,
                                                         order.currency_code
                                                     )}
                                                 </p>
-                                                <p classNam>
+                                                <p>
                                                     Quantity: {i.quantity}
                                                 </p>
                                             </div>

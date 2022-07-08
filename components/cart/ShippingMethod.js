@@ -4,7 +4,9 @@ import { formatMoney } from "../../utils/utils";
 
 function ShippingMethod({ handleOption, option, chosen }) {
     return (
-        <div className="shipping-checkout-wrapper">
+        <div className="shipping-checkout-wrapper" onClick={() => handleOption(option)} style={{
+            cursor: "pointer"
+        }}>
             <div className="checkout-left-item">
                 <div className="checkout-input">
                     <form action="#">

@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import StoreContext from "../../context/store-context";
+import CartList from "./CartList";
 
 function Address({ isProcessing, handleShippingSubmit }) {
     const { cart } = useContext(StoreContext);
@@ -8,8 +9,33 @@ function Address({ isProcessing, handleShippingSubmit }) {
         register,
         handleSubmit,
         watch,
+        setValue,
         formState: { errors },
     } = useForm();
+
+    useEffect(() => {
+        console.log(cart.shipping_address);
+        if (cart.shipping_address) {
+            const {
+                first_name,
+                last_name,
+                phone,
+                address_1,
+                country_code,
+                city,
+                postal_code,
+            } = cart.shipping_address;
+            const { email } = cart;
+            setValue("first_name", first_name);
+            setValue("last_name", last_name);
+            setValue("phone", phone);
+            setValue("email", email);
+            setValue("address_1", address_1);
+            setValue("country_code", country_code);
+            setValue("city", city);
+            setValue("postal_code", postal_code);
+        }
+    }, [cart]);
 
     const onSubmit = (data) => {
         const { email, ...rest } = data;
@@ -21,10 +47,10 @@ function Address({ isProcessing, handleShippingSubmit }) {
             <div className="container">
                 <div
                     className="row"
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                    }}
+                    // style={{
+                    //     display: "flex",
+                    //     justifyContent: "center",
+                    // }}
                 >
                     <div className="col-md-6 col-sm-12 col-xs-12">
                         <div className="account-creation">
@@ -77,6 +103,22 @@ function Address({ isProcessing, handleShippingSubmit }) {
                                                 aria-describedby="emailHelp"
                                                 placeholder="Enter email"
                                                 {...register("email", {
+                                                    required: true,
+                                                })}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <div className="form-group">
+                                            <label htmlFor="inputPhone">
+                                                Phone
+                                            </label>
+                                            <input
+                                                className="form-control"
+                                                id="inputPhone"
+                                                aria-describedby="phoneHelp"
+                                                placeholder="Enter phone"
+                                                {...register("phone", {
                                                     required: true,
                                                 })}
                                             />
@@ -161,27 +203,11 @@ function Address({ isProcessing, handleShippingSubmit }) {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-12">
-                                        <div className="form-group">
-                                            <label htmlFor="inputPhone">
-                                                Phone
-                                            </label>
-                                            <input
-                                                className="form-control"
-                                                id="inputPhone"
-                                                aria-describedby="phoneHelp"
-                                                placeholder="Enter phone"
-                                                {...register("phone", {
-                                                    required: true,
-                                                })}
-                                            />
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div className=" lp-account-btn btn-ac add-btn">
                                 <a href="#" onClick={handleSubmit(onSubmit)}>
-                                    Update{" "}
+                                    Continue to shipping{" "}
                                     <i
                                         className="fa fa-angle-right"
                                         aria-hidden="true"
@@ -189,6 +215,9 @@ function Address({ isProcessing, handleShippingSubmit }) {
                                 </a>
                             </div>
                         </div>
+                    </div>
+                    <div className="col-md-6 col-sm-12 col-xs-12">
+                        <CartList />
                     </div>
                     {/* <div className="col-md-6 col-sm-12 col-xs-12">
                         <div className="account-creation">

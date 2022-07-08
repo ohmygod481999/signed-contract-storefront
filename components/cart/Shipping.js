@@ -49,63 +49,49 @@ function Shipping({ handleDeliverySubmit, isProcessing, cart }) {
         <>
             <div className="shipping-checkout-top">
                 <div className="container">
-                    <div className="checkout-container-wrapper">
-                        <div className="checkout-text">
-                            <p>
-                                Choose a shipping option for this address: My
-                                address
-                            </p>
-                        </div>
-                        {isEmpty(shippingOptions) || isProcessing ? (
-                            <div>loading...</div>
-                        ) : (
-                            <div className="row">
-                                <div className="col-xs-12">
-                                    {shippingOptions.map((so) => {
-                                        return (
-                                            <div key={so.id}>
-                                                <ShippingMethod
-                                                    option={so}
-                                                    chosen={selectedOption}
-                                                    handleOption={
-                                                        handleSelectOption
-                                                    }
-                                                />
-                                            </div>
-                                        );
-                                    })}
-                                    <div className="checkout-bottom-ttl">
-                                        <form action="#">
-                                            <div className="checkout-btm">
-                                                <input
-                                                    type="checkbox"
-                                                    id="terms"
-                                                    name="#"
-                                                    defaultValue={1}
-                                                />
-                                                <label htmlFor="terms">
-                                                    I agree to the terms of
-                                                    service and will adhere to
-                                                    them unconditionally.
-                                                    <span className="check-color">
-                                                        <a href="#">
-                                                            {" "}
-                                                            (Read the Terms of
-                                                            Service)
-                                                        </a>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </form>
-                                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="checkout-container-wrapper">
+                                <div className="checkout-text">
+                                    <p>
+                                        Choose a shipping option for this
+                                        address: <strong>{cart.shipping_address.address_1}</strong>
+                                    </p>
                                 </div>
+                                {isEmpty(shippingOptions) || isProcessing ? (
+                                    <div>loading...</div>
+                                ) : (
+                                    <div className="row">
+                                        <div className="col-xs-12">
+                                            {shippingOptions.map((so) => {
+                                                return (
+                                                    <div key={so.id}>
+                                                        <ShippingMethod
+                                                            option={so}
+                                                            chosen={
+                                                                selectedOption
+                                                            }
+                                                            handleOption={
+                                                                handleSelectOption
+                                                            }
+                                                        />
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                        )}
+                        </div>
+                        <div className="col-md-6"></div>
                     </div>
                 </div>
             </div>
 
-            <CartBottom onBack={() => updateCheckoutStep(1)} onNext={handleSubmit} />
+            <CartBottom
+                onBack={() => updateCheckoutStep(1)}
+                onNext={handleSubmit}
+            />
             {/* <div className="bottom-indicator-area">
                 <div className="container">
                     <div className="row">
