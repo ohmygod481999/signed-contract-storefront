@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useContext, useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import StoreContext from "../context/store-context";
 import {
     formatMoney,
@@ -35,6 +36,7 @@ function ModalProduct({ isActive, setActive, product }) {
             variantId: currentVariant.id,
             quantity: parseInt(quantity),
         });
+        toast(`${product.title} has added to cart !`);
     };
 
     return (
@@ -149,9 +151,9 @@ function ModalProduct({ isActive, setActive, product }) {
                                                         product
                                                     )} */}
                                                 </span>{" "}
-                                                <span className="old-price">
+                                                {/* <span className="old-price">
                                                     $190.00
-                                                </span>{" "}
+                                                </span>{" "} */}
                                             </div>
                                         </div>{" "}
                                         <Link href={`/product/${product.id}`}>
@@ -224,7 +226,7 @@ function ModalProduct({ isActive, setActive, product }) {
                                         <div className="quick-desc">
                                             {product.description}
                                         </div>
-                                        <div className="social-sharing-modal">
+                                        {/* <div className="social-sharing-modal">
                                             <div className="widget widget_socialsharing_widget">
                                                 <h3 className="widget-title-modal">
                                                     Share this product
@@ -282,7 +284,7 @@ function ModalProduct({ isActive, setActive, product }) {
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     {/* .product-info */}
                                 </div>

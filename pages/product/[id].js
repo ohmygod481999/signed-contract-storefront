@@ -11,6 +11,7 @@ import {
     getVnProductPrice,
     getVnProductPrices,
 } from "../../utils/utils";
+import { toast } from "react-toastify";
 
 function Product({ product }) {
     const { addVariantToCart } = useContext(StoreContext);
@@ -39,6 +40,7 @@ function Product({ product }) {
             variantId: currentVariant.id,
             quantity: quantity,
         });
+        toast(`${product.title} has added to cart !`)
     };
 
     return (
@@ -154,7 +156,7 @@ function Product({ product }) {
                                             </del> */}
                                         </span>
                                     </div>
-                                    {product.options.length > 1 && (
+                                    {product.variants.length > 1 && (
                                         <div className="product-variant">
                                             {product.options.map((option) => (
                                                 <div

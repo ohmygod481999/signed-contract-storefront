@@ -9,6 +9,8 @@ import { DisplayProvider } from "../context/display-context";
 import { fetchAPI } from "../utils/api";
 import { getStrapiMedia } from "../utils/media";
 import { get } from "lodash";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import "../scripts/loader"
 
 function MyApp({ Component, pageProps }) {
@@ -19,6 +21,9 @@ function MyApp({ Component, pageProps }) {
     return (
         <StoreProvider>
             <DisplayProvider global={global}>
+                <ToastContainer style={{
+                    zIndex: 13001
+                }}/>
                 <Layout>
                     <Head>
                         {get(global, "attributes") && (
