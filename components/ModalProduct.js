@@ -198,7 +198,7 @@ function ModalProduct({ isActive, setActive, product }) {
                                         </div>{" "}
                                         <Link href={`/product/${product.id}`}>
                                             <a className="see-all">
-                                                See all features
+                                                Show more
                                             </a>
                                         </Link>
                                         {product.variants.length > 1 &&
