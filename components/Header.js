@@ -46,9 +46,17 @@ const routes2 = [
 function Header() {
     const router = useRouter();
 
-    const { cart, removeLineItem } = useContext(StoreContext);
+    const { cart, removeLineItem, updateLineItem } = useContext(StoreContext);
     const { cartView, updateCartViewDisplay } = useContext(DisplayContext);
     const { global } = useContext(DisplayContext);
+
+    const handleChangeQuantity = (lineId, quantity) => {
+        console.log(quantity);
+        updateLineItem({
+            lineId,
+            quantity,
+        });
+    };
 
     // const [isOpen, setIsOpen] = React.useState(false)
 
@@ -83,23 +91,29 @@ function Header() {
                 <div>
                     <div className="bag-header">
                         <h3>MY BAG</h3>
-                        <img src="/images/icons/close.png" alt="close" onClick={updateCartViewDisplay}/>
+                        <img
+                            src="/images/icons/close.png"
+                            alt="close"
+                            onClick={updateCartViewDisplay}
+                        />
                     </div>
                     <div className="bag-body">
                         {cart.items.map((item) => (
                             <div key={item.id} className="bag-item">
                                 <div className="bag-item__thumbnail">
-                                    <img
-                                        src={item.thumbnail}
-                                        alt="product"
-                                    />
+                                    <img src={item.thumbnail} alt="product" />
                                 </div>
                                 <div className="bag-item__content">
                                     <div className="bag-item__top">
                                         <div className="bag-item__title">
                                             {item.title}
                                         </div>
-                                        <div className="bag-item__remove">
+                                        <div
+                                            className="bag-item__remove"
+                                            onClick={() => {
+                                                removeLineItem(item.id);
+                                            }}
+                                        >
                                             Remove
                                         </div>
                                     </div>
@@ -107,7 +121,16 @@ function Header() {
                                         <div className="bag-item__quantity">
                                             <div className="skill-plusminus-wrap tiny">
                                                 <div className="skill-plusminus">
-                                                    <div className="skill-minus qtybutton">
+                                                    <div
+                                                        className="skill-minus qtybutton"
+                                                        onClick={() =>
+                                                            handleChangeQuantity(
+                                                                item.id,
+                                                                item.quantity -
+                                                                    1
+                                                            )
+                                                        }
+                                                    >
                                                         -
                                                     </div>
                                                     <input
@@ -116,15 +139,36 @@ function Header() {
                                                         className="cart-plus-minus-box"
                                                         // defaultValue={item.quantity}
                                                         value={item.quantity}
+                                                        onChange={(e) =>
+                                                            handleChangeQuantity(
+                                                                item.id,
+                                                                parseInt(
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            )
+                                                        }
                                                     />
-                                                    <div className="skill-plus qtybutton">
+                                                    <div
+                                                        className="skill-plus qtybutton"
+                                                        onClick={(e) =>
+                                                            handleChangeQuantity(
+                                                                item.id,
+                                                                item.quantity +
+                                                                    1
+                                                            )
+                                                        }
+                                                    >
                                                         +
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="bag-item__price">
-                                            {formatMoney(item.unit_price)}
+                                            {formatMoney(item.unit_price)}{" "}
+                                            {item.quantity > 1
+                                                ? `x${item.quantity}`
+                                                : ""}
                                         </div>
                                     </div>
                                 </div>
@@ -135,12 +179,19 @@ function Header() {
                 <div>
                     <div className="bag-subtotal">
                         <div className="bag-subtotal__title">SUBTOTAL:</div>
-                        <div className="bag-subtotal__price">{formatMoney(grandTotal)}</div>
+                        <div className="bag-subtotal__price">
+                            {formatMoney(grandTotal)}
+                        </div>
                     </div>
-                    <div className="bag-checkout" onClick={() => {
-                        router.push("/cart")
-                        updateCartViewDisplay()
-                    }}>CHECKOUT</div>
+                    <div
+                        className="bag-checkout"
+                        onClick={() => {
+                            router.push("/cart");
+                            updateCartViewDisplay();
+                        }}
+                    >
+                        CHECKOUT
+                    </div>
                 </div>
             </Drawer>
             <div className="header-topbar-area-top">
@@ -330,10 +381,20 @@ function Header() {
                                             </Link>
                                         </li>
                                     ))}
-                                    <li onClick={updateCartViewDisplay} style={{
-                                        cursor: "pointer"
-                                    }}>
-                                        <a>My bag ({numItems})</a>
+                                    <li
+                                        className="my-bag-header"
+                                        onClick={updateCartViewDisplay}
+                                        style={{
+                                            cursor: "pointer",
+                                        }}
+                                    >
+                                        <a>
+                                            <img
+                                                src="/images/icons/checkout.png"
+                                                alt="checkout icon"
+                                            />{" "}
+                                            My bag ({numItems})
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>

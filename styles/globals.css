@@ -159,4 +159,15 @@ input[type="number"] {
     text-align: center;
     padding: 20px;
     cursor: pointer;
+    font-weight: 1000;
+    font-size: 20px;
+}
+
+.bag-body {
+    overflow-x: scroll;
+    max-height: 70vh;
+}
+
+.my-bag-header img{
+    width: 20px;
 }
