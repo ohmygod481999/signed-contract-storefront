@@ -103,7 +103,7 @@ function CartTable() {
                                                         <span>In stock</span>
                                                     </td>
                                                     <td className="td4">
-                                                        {item.unit_price}
+                                                        {formatMoney(item.unit_price)}
                                                     </td>
                                                     <td className="td5 item-qty">
                                                         <div className="cart-plus-minus">

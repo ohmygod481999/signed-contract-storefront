@@ -163,6 +163,11 @@ input[type="number"] {
     font-size: 20px;
 }
 
+.bag-checkout img {
+    width: 25px;
+    margin-bottom: 6px;
+}
+
 .bag-body {
     overflow-x: scroll;
     max-height: 70vh;

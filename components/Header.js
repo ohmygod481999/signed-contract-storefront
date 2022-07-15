@@ -190,7 +190,8 @@ function Header() {
                             updateCartViewDisplay();
                         }}
                     >
-                        CHECKOUT
+                        CHECKOUT{" "}
+                        <img src="/images/icons/checkout-2.png" alt="checkout icon" />
                     </div>
                 </div>
             </Drawer>
