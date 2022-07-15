@@ -389,11 +389,7 @@ function Header() {
                                         }}
                                     >
                                         <a>
-                                            <img
-                                                src="/images/icons/checkout.png"
-                                                alt="checkout icon"
-                                            />{" "}
-                                            My bag ({numItems})
+                                            My bag ({numItems}){" "}
                                         </a>
                                     </li>
                                 </ul>

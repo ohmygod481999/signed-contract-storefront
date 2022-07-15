@@ -140,7 +140,7 @@
 }
 
 .btn-def-checkout:hover {
-    background: #A08D7C;
+    background: black;
 }
 
 a.btn-def {
@@ -159,16 +159,16 @@ a.btn-def {
     letter-spacing: 2px;
     text-transform: uppercase;
 
-    color: #A08D7C;
-    border: 1px solid #A08D7C;
+    color: black;
+    border: 1px solid black;
     background: #FFF none repeat scroll 0 0;
 }
 
 
 a.btn-def:hover {
     color: #FFF;
-    border: 1px solid #A08D7C;
-    background: #A08D7C;
+    border: 1px solid black;
+    background: black;
 }
 
 a.btn-def-black {
@@ -191,8 +191,8 @@ a.btn-def-black {
 
 a.btn-def-black:hover {
     color: #FFF;
-    border: 1px solid #A08D7C;
-    background: #A08D7C;
+    border: 1px solid black;
+    background: black;
 }
 
 a.btn-def-color {
@@ -208,8 +208,8 @@ a.btn-def-color {
     text-transform: uppercase;
 
     color: #FFF;
-    border: 1px solid #A08D7C;
-    background: #A08D7C;
+    border: 1px solid black;
+    background: black;
 }
 
 a.btn-def-color:hover {
@@ -232,8 +232,8 @@ a.btn-def-white {
 
 a.btn-def-white:hover {
     color: #FFF;
-    border: 1px solid #A08D7C;
-    background: #A08D7C;
+    border: 1px solid black;
+    background: black;
 }
 
 .def-underline::before {
@@ -247,7 +247,7 @@ a.btn-def-white:hover {
     content: "";
     transform: translateX(-50%);
 
-    background: #A08D7C;
+    background: black;
 }
 
 
@@ -276,7 +276,7 @@ a.btn-def-white:hover {
     content: "";
     transform: translateX(-50%);
 
-    background: #A08D7C none repeat scroll 0 0;
+    background: black none repeat scroll 0 0;
 }
 
 .round-btn {
@@ -304,14 +304,14 @@ a.btn-def-white:hover {
     transition: 0.3s;
     text-align: center;
 
-    color: #A08D7C;
-    border: 1px solid #A08D7C;
+    color: black;
+    border: 1px solid black;
     background: #FFF none repeat scroll 0 0;
 }
 
 .social-icon a:hover {
     color: #FFF;
-    background: #A08D7C;
+    background: black;
 }
 
 .label-sale {
@@ -362,16 +362,16 @@ a.btn-def-white:hover {
 
     transition: 0.3s;
 
-    color: #A08D7C;
-    border: 2px solid #A08D7C;
+    color: black;
+    border: 2px solid black;
     border-radius: 0;
     background: #FFF none repeat scroll 0 0;
 }
 
 .def-owl.owl-theme .owl-controls .owl-buttons div:hover {
     color: #FFF;
-    border: 2px solid #A08D7C;
-    background: #A08D7C;
+    border: 2px solid black;
+    background: black;
 }
 
 .def-virticle-line::before {
@@ -403,7 +403,7 @@ a.btn-def-white:hover {
 
     color: #FFF;
     border-radius: 100%;
-    background: #A08D7C none repeat scroll 0 0;
+    background: black none repeat scroll 0 0;
 }
 
 .hvreff-defm20::before {
@@ -486,8 +486,8 @@ a.btn-def-white:hover {
 }
 
 .btn-trans:hover {
-    color: #A08D7C;
-    border: 1px solid #A08D7C;
+    color: black;
+    border: 1px solid black;
 }
 
 .btn-nontrans {
@@ -502,8 +502,8 @@ a.btn-def-white:hover {
     text-decoration: none;
     text-transform: uppercase;
 
-    color: #A08D7C;
-    border: 1px solid #A08D7C;
+    color: black;
+    border: 1px solid black;
     background: transparent none repeat scroll 0 0;
 }
 
@@ -521,8 +521,8 @@ a.btn-def-white:hover {
     transition: 0.3s;
     text-transform: uppercase;
 
-    color: #A08D7C;
-    border: 1px solid #A08D7C;
+    color: black;
+    border: 1px solid black;
     background: transparent none repeat scroll 0 0;
 }
 
@@ -532,7 +532,7 @@ a.btn-def-white:hover {
 }
 
 .text-color {
-    color: #A08D7C;
+    color: black;
 }
 
 .btn-back2 {
@@ -548,8 +548,8 @@ a.btn-def-white:hover {
 
 .btn-back2:hover {
     color: #FFF;
-    border: 1px solid #A08D7C;
-    background: #A08D7C;
+    border: 1px solid black;
+    background: black;
 }
 
 /*----------------------------------------*/
@@ -678,7 +678,7 @@ a.btn-def-white:hover {
 
     color: #FFF;
     border: medium none;
-    background: #A08D7C;
+    background: black;
 }
 
 .cart-stylei {
@@ -853,7 +853,7 @@ h3.widget-title-modal {
 
 .indicator-def a:hover {
     color: #FFF;
-    background: #A08D7C;
+    background: black;
 }
 
 .indicator-def > a i {

@@ -90,7 +90,7 @@
 
         content: "";
 
-        background: #A08D7C none repeat scroll 0 0;
+        background: black none repeat scroll 0 0;
     }
 
     .footer-content {
@@ -1180,8 +1180,8 @@
 
         transition: 0.3s;
 
-        color: #A08D7C;
-        border: 1px solid #A08D7C;
+        color: black;
+        border: 1px solid black;
         background: transparent none repeat scroll 0 0;
     }
 
@@ -2117,7 +2117,7 @@
         content: "";
         transform: translateX(-50%);
 
-        background: #A08D7C none repeat scroll 0 0;
+        background: black none repeat scroll 0 0;
     }
 
     .title-head > h2 {

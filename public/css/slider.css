@@ -83,7 +83,7 @@
 }
 
 .slide-one-title span.slide-text-big {
-    color: #a08d7c;
+    color: black;
     font-size: 90px;
     font-weight: 700;
 }
@@ -104,7 +104,7 @@
 	margin-bottom: 57px;
 }
 .slide-two-title > h4 {
-    color: #a08d7c;
+    color: black;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -139,8 +139,8 @@
 }
 
 .nivo-directionNav a:hover {
-    border: 2px solid #a08d7c;
-    color: #a08d7c;
+    border: 2px solid black;
+    color: black;
 }
 
 .nivo-prevNav {
@@ -152,7 +152,7 @@
 }
 
 .slide-underline::before {
-	background: #a08d7c none repeat scroll 0 0;
+	background: black none repeat scroll 0 0;
 	bottom: -20px;
 	content: "";
 	height: 2px;
@@ -186,7 +186,7 @@
 }
 
 .nivo-control.active {
-    background: #a08d7c;
+    background: black;
 }
 
 
@@ -196,7 +196,7 @@
 /*==============================Home2=========================*/
 
 .slide-upper-line::before {
-    background: #a08d7c none repeat scroll 0 0;
+    background: black none repeat scroll 0 0;
     content: "";
     height: 8px;
     left: 0;
@@ -227,7 +227,7 @@
 /*position using flex tag end*/
 
 .slider2-text h4 {
-    color: #a08d7c;
+    color: black;
     display: block;
     font-family: Montserrat;
     font-size: 80px;
@@ -264,12 +264,12 @@
 }
 
 .slider2-container .nivo-directionNav a {
-    border: 2px solid #a08d7c;
-    color: #a08d7c;
+    border: 2px solid black;
+    color: black;
 }
 
 .slider2-container .nivo-directionNav a:hover {
-    background: #a08d7c;
+    background: black;
     color: #fff;
 }
 
@@ -311,7 +311,7 @@
 }
 
 .slider3-stext h4 {
-	color: #a08d7c;
+	color: black;
 	font-size: 18px;
 	text-transform: uppercase;
 	margin-bottom: 10px;
@@ -319,7 +319,7 @@
 }
 
 .slider3-toptext h4 {
-    color: #a08d7c;
+    color: black;
     font-size: 18px;
     text-transform: uppercase;
     letter-spacing: .2em;
@@ -340,7 +340,7 @@
 }
 
 .slider3-toptext::before {
-    background: #a08d7c none repeat scroll 0 0;
+    background: black none repeat scroll 0 0;
     content: "";
     height: 1px;
     position: absolute;
@@ -384,7 +384,7 @@
 }
 
 .slider4-bttm-text::before {
-    background: #a08d7c none repeat scroll 0 0;
+    background: black none repeat scroll 0 0;
     content: "";
     height: 4px;
     left: 50%;
@@ -399,7 +399,7 @@
 }
 
 .slide4-dominot2::before {
-    background: #a08d7c none repeat scroll 0 0;
+    background: black none repeat scroll 0 0;
     content: "";
     height: 4px;
     left: 50%;
@@ -458,8 +458,8 @@
 }
 
 .slide6-capp1 .btn-hp4 {
-  background: #a08d7c none repeat scroll 0 0;
-  border: 1px solid #a08d7c;
+  background: black none repeat scroll 0 0;
+  border: 1px solid black;
   color: #ffffff;
   padding: 10px 25px;
 }

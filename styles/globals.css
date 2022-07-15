@@ -171,3 +171,67 @@ input[type="number"] {
 .my-bag-header img{
     width: 20px;
 }
+
+/* order summary */
+
+.order-summary__order-id {
+    font-size: 20px;
+}
+
+.order-summary__order-id span{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+.order-summary-section h4 {
+    border-bottom: 1px solid black;
+    margin-bottom: 18px;
+}
+
+.order-summary-section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.order-summary-header {
+    text-align: center;
+}
+
+.order-summary-cart__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-summary-cart__address {
+    margin-bottom: 20px;
+}
+
+.order-summary-cart__address p{
+    margin-bottom: 2px;
+}
+
+.order-summary-cart__cost-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 10px;
+}
+
+.order-summary-cart__cost-hr {
+    border-bottom: 1px solid black;
+    width: 100px;
+    float: right;
+}
+
+.order-summary-cart__cost-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.order-summary__thanks-order {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
