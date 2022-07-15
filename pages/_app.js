@@ -74,10 +74,10 @@ function MyApp({ Component, pageProps }) {
                         strategy="beforeInteractive"
                     />
 
-                    <Script
+                    {/* <Script
                         src="/js/bootstrap.min.js"
                         strategy="beforeInteractive"
-                    />
+                    /> */}
 
                     <Script
                         src="/js/owl.carousel.min.js"

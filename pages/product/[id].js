@@ -12,9 +12,12 @@ import {
     getVnProductPrices,
 } from "../../utils/utils";
 import { toast } from "react-toastify";
+import DisplayContext from "../../context/display-context";
 
 function Product({ product }) {
     const { addVariantToCart } = useContext(StoreContext);
+    const { updateCartViewDisplay } = useContext(DisplayContext);
+
     const router = useRouter();
     const [tab, setTab] = useState(1);
     const [currentOption, setCurrentOption] = useState({
@@ -40,7 +43,9 @@ function Product({ product }) {
             variantId: currentVariant.id,
             quantity: quantity,
         });
-        toast(`${product.title} has added to cart !`)
+
+        updateCartViewDisplay()
+        // toast(`${product.title} has added to cart !`)
     };
 
     return (

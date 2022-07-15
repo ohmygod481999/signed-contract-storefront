@@ -10,45 +10,72 @@ function Footer() {
     return (
         <div className="main-footer-area">
             <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-sm-6 col-xs-12">
-                        <div className="footer-content-wrapper">
-                            <div className="footer-content">
-                                <div
-                                    id="f-about"
-                                    className="footer-title def-funderline ftitle-about posr"
-                                >
-                                    <div className="">
-                                        <Link href="/">
-                                            <a>
-                                                <img
-                                                    style={{
-                                                        width: "75px",
-                                                    }}
-                                                    src={getStrapiMedia(
-                                                        get(
-                                                            global,
-                                                            "attributes.secondary_logo"
-                                                        )
-                                                    )}
-                                                    alt="domino"
-                                                />
-                                            </a>
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div className="footer-text">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consec
-                                        tetuer adipis elit, aliquam eget nibh
-                                        etlibura. Aenean commodo ligula eget
-                                        dolor Aenean massa. Portals seize
-                                        data-driven, tag expedite
-                                    </p>
-                                    <div className="footer-readmore">
-                                        <a href="about.html">Read more</a>
-                                    </div>
-                                </div>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <div
+                        style={{
+                            display: "flex",
+                        }}
+                    >
+                        <Link href="/">
+                            <a
+                                style={{
+                                    marginBottom: "10px",
+                                }}
+                            >
+                                <img
+                                    style={{
+                                        width: "75px",
+                                    }}
+                                    src={getStrapiMedia(
+                                        get(global, "attributes.secondary_logo")
+                                    )}
+                                    alt="domino"
+                                />
+                            </a>
+                        </Link>
+
+                        <ul
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                marginLeft: "15px",
+                            }}
+                        >
+                            <li>
+                                <Link href={"/purchase-policy"}>
+                                    <a
+                                        title="Contact us"
+                                        style={{
+                                            color: "#FFF",
+                                            // textTransform: "uppercase",
+                                            fontSize: "13px",
+                                        }}
+                                    >
+                                        PURCHASE POLICY
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={"/return-policy"}>
+                                    <a
+                                        title="Discount"
+                                        style={{
+                                            color: "#FFF",
+                                            // textTransform: "uppercase",
+                                            fontSize: "13px",
+                                        }}
+                                    >
+                                        RETURN POLICY
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
                                 <ul className="footer-social-icon">
                                     <li>
                                         <a href="#">
@@ -57,99 +84,32 @@ function Footer() {
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i className="zmdi zmdi-twitter" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i className="zmdi zmdi-rss" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i className="zmdi zmdi-youtube" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i className="zmdi zmdi-google-plus" />
+                                            <i className="zmdi zmdi-instagram" />
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div className="col-md-2 col-sm-6 col-xs-12">
-                        <div className="footer-list-wrapper">
-                            <div
-                                id="f-info"
-                                className="footer-title def-funderline ftitle-info posr"
-                            >
-                                <h5 className="active">Information</h5>
-                            </div>
-                            <ul className="footer-list-text jscroll-info">
-                                <li>
-                                    <a href="shop.html" title="New products">
-                                        New products
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="single-product.html"
-                                        title="Best sellers"
-                                    >
-                                        Best sellers
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html" title="Our stores">
-                                        Our stores
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="contact.html" title="Contact us">
-                                        Contact us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index2.html" title="Sitemap">
-                                        Sitemap
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="col-md-2 col-sm-6 col-xs-12">
-                        <div className="footer-list-wrapper">
-                            <div
-                                id="f-cussve"
-                                className="footer-title def-funderline def-funderline2 ftitle-cus posr"
-                            >
-                                <h5 className="active">Customer Service</h5>
-                            </div>
-                            <ul className="footer-list-text jscroll-cussrve">
-                                <li>
-                                    <a href="contact.html" title="Contact us">
-                                        Chính sách mua hàng
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index2.html" title="Discount">
-                                        Chính sách đổi trả
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index2.html" title="Site map">
-                                        Chính sách bảo hành
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="about.html" title="About us">
-                                        Chính sách khách hàng thân thiết
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div
+                        className="quotes"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "16px",
+                        }}
+                    >
+                        <h3
+                            style={{
+                                marginBottom: 0,
+                            }}
+                        >
+                            BE A MAN
+                            <br />
+                            WHO PROVES NOT ALL
+                            <br />
+                            MAN ARE SAME
+                        </h3>
                     </div>
                 </div>
             </div>

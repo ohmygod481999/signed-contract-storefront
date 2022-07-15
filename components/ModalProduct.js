@@ -1,7 +1,9 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "react-toastify";
+import DisplayContext from "../context/display-context";
 import StoreContext from "../context/store-context";
+import { useOnClickOutside } from "../hooks/useOnClickOutSide";
 import {
     formatMoney,
     getPriceFromOption,
@@ -11,19 +13,43 @@ import {
 } from "../utils/utils";
 
 function ModalProduct({ isActive, setActive, product }) {
+    const ref = useRef();
+
     const { addVariantToCart, cart } = useContext(StoreContext);
+    const { updateCartViewDisplay } = useContext(DisplayContext);
     const [quantity, setQuantity] = useState(1);
 
-    const [currentOption, setCurrentOption] = useState(null);
-    const currentVariant = useMemo(
-        () =>
-            product ? getVariantFromOption(product, currentOption || {}) : null,
-        [product, currentOption]
+    const [currentOption, setCurrentOption] = useState(
+        product
+            ? {
+                  [product.options[0].id]: product.options[0].values[0].id,
+              }
+            : null
     );
+    const currentVariant = useMemo(() => {
+        if (product) {
+            console.log("run", product, currentOption);
+        }
+        return product
+            ? getVariantFromOption(product, currentOption || {})
+            : null;
+    }, [product, currentOption]);
+
+    // console.log(product.variants);
+    console.log(currentOption);
+    console.log(currentVariant);
 
     useEffect(() => {
-        setQuantity(1);
-        setCurrentOption(null);
+        if (product) {
+            setQuantity(1);
+            setCurrentOption({
+                [product.options[0].id]: product.options[0].values[0].id,
+            });
+        }
+        // if (product?.variants?.length > 1) {
+        // } else {
+        //     setCurrentOption(product?.options[0]);
+        // }
     }, [product]);
 
     const handleAddToCart = () => {
@@ -36,12 +62,26 @@ function ModalProduct({ isActive, setActive, product }) {
             variantId: currentVariant.id,
             quantity: parseInt(quantity),
         });
-        toast(`${product.title} has added to cart !`);
+        setActive(false);
+        updateCartViewDisplay();
+        // toast(`${product.title} has added to cart !`);
     };
+
+    useOnClickOutside(ref, () => {
+        setActive(false);
+    });
 
     return (
         <div id="quickview-wrapper">
             {/* Modal */}
+            {isActive && (
+                <div
+                    onClick={() => {
+                        setActive(false);
+                    }}
+                    className={`modal-backdrop fade in`}
+                ></div>
+            )}
             <div
                 className={`modal fade ${isActive ? "in" : ""}`}
                 id="productModal"
@@ -63,7 +103,7 @@ function ModalProduct({ isActive, setActive, product }) {
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body" ref={ref}>
                             {product ? (
                                 <div className="modal-product">
                                     <div className="product-images">

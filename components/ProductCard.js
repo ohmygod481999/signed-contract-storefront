@@ -67,7 +67,10 @@ function ProductCard({ product, toggleModal, isHaveBottom = true }) {
                                     data-toggle="modal"
                                     data-target=".modal"
                                     href="#"
-                                    onClick={() => toggleModal(product)}
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        toggleModal(product)
+                                    }}
                                 >
                                     {/* <i className=" product-search fa fa-search" />{" "} */}
                                     Order now

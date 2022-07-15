@@ -6,6 +6,8 @@ import DisplayContext from "../context/display-context";
 import { get } from "lodash";
 import { getStrapiMedia } from "../utils/media";
 import { formatMoney } from "../utils/utils";
+import Drawer from "react-modern-drawer";
+import "react-modern-drawer/dist/index.css";
 
 const routes = [
     {
@@ -20,6 +22,17 @@ const routes = [
         name: "Brochure",
         path: "/brochure",
     },
+    // {
+    //     name: "Retailers",
+    //     path: "/retailer",
+    // },
+    // {
+    //     name: "Contact",
+    //     path: "/contact",
+    // },
+];
+
+const routes2 = [
     {
         name: "Retailers",
         path: "/retailer",
@@ -34,7 +47,10 @@ function Header() {
     const router = useRouter();
 
     const { cart, removeLineItem } = useContext(StoreContext);
+    const { cartView, updateCartViewDisplay } = useContext(DisplayContext);
     const { global } = useContext(DisplayContext);
+
+    // const [isOpen, setIsOpen] = React.useState(false)
 
     let numItems = 0;
     cart.items.forEach((item) => {
@@ -51,11 +67,97 @@ function Header() {
 
     return (
         <div className="header-area">
+            <Drawer
+                open={cartView}
+                onClose={updateCartViewDisplay}
+                direction="right"
+                className="my-drawer"
+                style={{
+                    width: 400,
+                    borderLeft: "2px solid black",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                }}
+            >
+                <div>
+                    <div className="bag-header">
+                        <h3>MY BAG</h3>
+                        <img src="/images/icons/close.png" alt="close" onClick={updateCartViewDisplay}/>
+                    </div>
+                    <div className="bag-body">
+                        {cart.items.map((item) => (
+                            <div key={item.id} className="bag-item">
+                                <div className="bag-item__thumbnail">
+                                    <img
+                                        src={item.thumbnail}
+                                        alt="product"
+                                    />
+                                </div>
+                                <div className="bag-item__content">
+                                    <div className="bag-item__top">
+                                        <div className="bag-item__title">
+                                            {item.title}
+                                        </div>
+                                        <div className="bag-item__remove">
+                                            Remove
+                                        </div>
+                                    </div>
+                                    <div className="bag-item__bottom">
+                                        <div className="bag-item__quantity">
+                                            <div className="skill-plusminus-wrap tiny">
+                                                <div className="skill-plusminus">
+                                                    <div className="skill-minus qtybutton">
+                                                        -
+                                                    </div>
+                                                    <input
+                                                        type="number"
+                                                        name="#"
+                                                        className="cart-plus-minus-box"
+                                                        // defaultValue={item.quantity}
+                                                        value={item.quantity}
+                                                    />
+                                                    <div className="skill-plus qtybutton">
+                                                        +
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="bag-item__price">
+                                            {formatMoney(item.unit_price)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <div className="bag-subtotal">
+                        <div className="bag-subtotal__title">SUBTOTAL:</div>
+                        <div className="bag-subtotal__price">{formatMoney(grandTotal)}</div>
+                    </div>
+                    <div className="bag-checkout" onClick={() => {
+                        router.push("/cart")
+                        updateCartViewDisplay()
+                    }}>CHECKOUT</div>
+                </div>
+            </Drawer>
             <div className="header-topbar-area-top">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 col-sm-4 col-xs-12">
-                            <ul className="header-social-icon text-left">
+                            <ul className="header-login posr text-left">
+                                <li>
+                                    <Link href={"/policy"}>
+                                        <a>Our policy</a>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="col-md-6 col-sm-6 col-xs-12"></div>
+                        <div className="col-md-2 col-sm-2 col-xs-12">
+                            <ul className="header-social-icon text-right">
                                 <li>
                                     <a
                                         target={"_blank"}
@@ -77,16 +179,6 @@ function Header() {
                                     >
                                         <i className="fa fa-envelope" />
                                     </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="col-md-6 col-sm-6 col-xs-12"></div>
-                        <div className="col-md-2 col-sm-2 col-xs-12">
-                            <ul className="header-login posr text-right">
-                                <li>
-                                    <Link href={"/login"}>
-                                        <a>Login</a>
-                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -168,7 +260,7 @@ function Header() {
                                     className="main-menu"
                                     style={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "start",
                                     }}
                                 >
                                     {routes.map((route) => (
@@ -214,132 +306,37 @@ function Header() {
                                 </Link>
                             </div>
                         </div>
+
                         <div className="col-md-5 col-sm-10 hidden-xs">
-                            <div
-                                className="main-cart-area cart-sticky-display posr"
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "flex-end",
-                                }}
-                            >
-                                <div className="header-search header-search-position posr">
-                                    <form action="#">
-                                        <input
-                                            type="text"
-                                            defaultValue
-                                            placeholder="Search Product..."
-                                        />
-                                        <button type="submit">
-                                            <i className="fa fa-search" />
-                                        </button>
-                                    </form>
-                                </div>
-                                <div className="header-cart-area cart-hover-effect">
-                                    <Link href="/cart">
-                                        <div className="shopping-cart style-shopping-bag strong-up">
-                                            {/* <a>
-                                                <span>
-                                                    <strong>
-                                                        Shopping cart
-                                                    </strong>
-                                                </span>
-                                            </a> */}
-                                        </div>
-                                    </Link>
-                                    {/* <div className="shopping-cart">
-                                        <Link href="/cart">
-                                            <a>
-                                                <span className="cart-item">
-                                                    {numItems} item(s)
-                                                </span>
-                                                <span className="cart-amount">
-                                                    {" "}
-                                                    - $0.00
-                                                </span>
-                                            </a>
-                                        </Link>
-                                    </div> */}
-                                    <div className="header-cart-box-wrapper cart-position-style1">
-                                        {cart.items.map((item) => (
-                                            <div
-                                                key={item.id}
-                                                className="single-cart-box"
-                                            >
-                                                <div className="cart-image">
-                                                    <a
-                                                        href={`/product/${item.variant.product.id}`}
-                                                    >
-                                                        <img
-                                                            src={item.thumbnail}
-                                                            alt=""
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="cart-content">
-                                                    <div className="cart-heading">
-                                                        <a href="cart.html">
-                                                            {" "}
-                                                            <span className="cart-qty">
-                                                                {item.quantity}{" "}
-                                                                x
-                                                            </span>{" "}
-                                                            {item.title}
-                                                        </a>
-                                                    </div>
-                                                    <div className="cart-dress-color">
-                                                        <span>
-                                                            {item.variant.title}
-                                                        </span>
-                                                    </div>
-                                                    <div className="cart-price">
-                                                        {formatMoney(
-                                                            item.unit_price
-                                                        )}
-                                                    </div>
-                                                </div>
-                                                <div className="cart-remove deft-remove-icon">
-                                                    <a
-                                                        href="#"
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            removeLineItem(
-                                                                item.id
-                                                            );
-                                                        }}
-                                                    >
-                                                        <i className="zmdi zmdi-close" />
-                                                    </a>
-                                                </div>
-                                                <div className="cart-shipping-cost">
-                                                    <span className="shipping-text">
-                                                        Shipping{" "}
-                                                    </span>
-                                                    <span className="shipping-amt">
-                                                        $7.00
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        ))}
-                                        <div className="clearfix" />
-                                        <div className="cart-subtotal">
-                                            <span className="subttl-text">
-                                                Grand total
-                                            </span>
-                                            <span className="subttl-amt">
-                                                {formatMoney(grandTotal)}
-                                            </span>
-                                        </div>
-                                        <div className="cart-checkout-btn btn-def-checkout">
-                                            <Link href="/cart">
-                                                <a>
-                                                    Check out{" "}
-                                                    <i className="checkout-dir-icon zmdi zmdi-chevron-right " />
-                                                </a>
+                            <nav>
+                                <ul
+                                    className="main-menu"
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "end",
+                                    }}
+                                >
+                                    {routes2.map((route) => (
+                                        <li
+                                            key={route.path}
+                                            className={
+                                                router.pathname === route.path
+                                                    ? "active"
+                                                    : ""
+                                            }
+                                        >
+                                            <Link href={route.path}>
+                                                <a>{route.name}</a>
                                             </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        </li>
+                                    ))}
+                                    <li onClick={updateCartViewDisplay} style={{
+                                        cursor: "pointer"
+                                    }}>
+                                        <a>My bag ({numItems})</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
