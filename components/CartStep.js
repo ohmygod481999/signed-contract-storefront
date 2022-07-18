@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import DisplayContext from "../context/display-context";
 
-const steps = ["Cart", "Address", "Shipping", "Payment"];
+const steps = ["Cart", "Address", "Payment"];
+// const steps = ["Cart", "Address", "Shipping", "Payment"];
 
 function CartStep() {
     const { checkoutStep, updateCheckoutStep, updateOrderSummaryDisplay } =

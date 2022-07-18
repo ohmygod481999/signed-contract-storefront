@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import StoreContext from "../../context/store-context";
 import CartList from "./CartList";
 
-function Address({ isProcessing, handleShippingSubmit }) {
-    const { cart } = useContext(StoreContext);
+function Address({ isProcessing, handleShippingSubmit, handleDeliverySubmit }) {
+    const { cart, getShippingOptions } = useContext(StoreContext);
     const {
         register,
         handleSubmit,
@@ -37,9 +37,11 @@ function Address({ isProcessing, handleShippingSubmit }) {
         }
     }, [cart]);
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const { email, ...rest } = data;
-        handleShippingSubmit(rest, email);
+        await handleShippingSubmit(rest, email);
+        const shippingOptions = await getShippingOptions();
+        await handleDeliverySubmit(shippingOptions[0]);
     };
 
     return (

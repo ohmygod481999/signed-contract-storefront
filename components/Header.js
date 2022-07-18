@@ -191,7 +191,10 @@ function Header() {
                         }}
                     >
                         CHECKOUT{" "}
-                        <img src="/images/icons/checkout-2.png" alt="checkout icon" />
+                        <img
+                            src="/images/icons/checkout-2.png"
+                            alt="checkout icon"
+                        />
                     </div>
                 </div>
             </Drawer>
@@ -224,12 +227,14 @@ function Header() {
                                 </li>
                                 <li>
                                     <a
-                                        href={`mailto:${get(
+                                        target={"_blank"}
+                                        rel="noreferrer"
+                                        href={get(
                                             global,
-                                            "attributes.contact_info.email"
-                                        )}`}
+                                            "attributes.contact_info.insta"
+                                        )}
                                     >
-                                        <i className="fa fa-envelope" />
+                                        <i className="zmdi zmdi-instagram" />
                                     </a>
                                 </li>
                             </ul>
@@ -389,9 +394,7 @@ function Header() {
                                             cursor: "pointer",
                                         }}
                                     >
-                                        <a>
-                                            My bag ({numItems}){" "}
-                                        </a>
+                                        <a>My bag ({numItems}) </a>
                                     </li>
                                 </ul>
                             </nav>

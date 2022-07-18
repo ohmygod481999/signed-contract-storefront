@@ -25,14 +25,14 @@ function Cart() {
         await updateAddress(address, email);
 
         setIsProcessingInfo(false);
-        updateCheckoutStep(2);
+        // updateCheckoutStep(2);
     };
 
     useEffect(() => {
         if (checkoutStep === undefined) {
             updateCheckoutStep(0);
         }
-        if (checkoutStep === 3) {
+        if (checkoutStep === 2) {
             createPaymentSession();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,7 +42,7 @@ function Cart() {
         setIsProcessingShipping(true);
         await setShippingMethod(option.id)
             .then(() => {
-                updateCheckoutStep(3);
+                updateCheckoutStep(2);
             })
             .finally(() => {
                 setIsProcessingShipping(false);
@@ -60,18 +60,19 @@ function Cart() {
                         handleShippingSubmit={(submittedAddr, submittedEmail) =>
                             handleShippingSubmit(submittedAddr, submittedEmail)
                         }
-                    />
-                );
-            case 2:
-                return (
-                    <Shipping
-                        isProcessing={isProcessingShipping}
-                        cart={cart}
                         handleDeliverySubmit={handleDeliverySubmit}
-                        savedMethods={cart.shipping_methods}
                     />
                 );
-            case 3:
+            // case 2:
+            //     return (
+            //         <Shipping
+            //             isProcessing={isProcessingShipping}
+            //             cart={cart}
+            //             handleDeliverySubmit={handleDeliverySubmit}
+            //             savedMethods={cart.shipping_methods}
+            //         />
+            //     );
+            case 2:
                 return <Payment />;
             default:
                 return null;
