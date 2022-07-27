@@ -96,3 +96,7 @@ export const formatMoney = (amount) => {
 
     return formatter.format(amount);
 };
+
+export const paddingId = (id) => {
+    return String(id).padStart(5, "0");
+};
