@@ -9,7 +9,7 @@ import "animate.css";
 import { getStrapiMedia, getStrapiMedias } from "../utils/media";
 
 const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -89,7 +89,7 @@ const slideContents = [
 
 function Slider2({ images }) {
     return (
-        <Slider {...settings}>
+        <Slider {...settings} arrows={null}>
             {getStrapiMedias(images).map((imageUrl, i) => {
                 // if (i >= slideContents.length) return null;
                 return (
