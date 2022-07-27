@@ -4374,7 +4374,7 @@ td {
 .shopping-cart-table .td1 img,
 .td8 img {
     width: 95px;
-    height: 120px;
+    /* height: 120px; */
 
     border: 1px solid #D6D4D4;
 }

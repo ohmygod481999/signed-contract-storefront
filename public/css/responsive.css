@@ -1355,7 +1355,7 @@
     .shopping-cart-table .td1 img,
     .td8 img {
         width: 63px;
-        height: 90px;
+        /* height: 90px; */
     }
 
     .shopping-cart-table .th3.pth3 {
@@ -3387,7 +3387,7 @@
     .shopping-cart-table .td1 img,
     .td8 img {
         width: 51px;
-        height: 90px;
+        /* height: 90px; */
 
         border: 1px solid #D6D4D4;
     }
