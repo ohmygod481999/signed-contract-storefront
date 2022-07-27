@@ -99,15 +99,16 @@ function Slider2({ images }) {
                             className="nivo-html-caption slider-caption-1"
                             style={{
                                 display: "block",
-                                backgroundImage: `url(${imageUrl})`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover",
-                                backgroundRepeat: "no-repeat",
-                                paddingTop: "80px",
-                                paddingBottom: "80px",
-                                height: "500px",
+                                // backgroundImage: `url(${imageUrl})`,
+                                // backgroundPosition: "center",
+                                // backgroundSize: "cover",
+                                // backgroundRepeat: "no-repeat",
+                                // paddingTop: "80px",
+                                // paddingBottom: "80px",
+                                // height: "500px",
                             }}
                         >
+                            <img src={imageUrl} alt="slide" />
                             <div className="slider-progress" />
                             {/* {slideContents[i]} */}
                         </div>
