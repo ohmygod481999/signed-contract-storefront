@@ -265,7 +265,7 @@ function Product({ product }) {
                                             onClick={addToCartHandler}
                                         >
                                             <i className="fa fa-shopping-cart" />{" "}
-                                            Add to cart
+                                            Add to bag
                                         </a>
                                     </div>
                                 </div>

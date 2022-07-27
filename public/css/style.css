@@ -70,9 +70,20 @@ CSS INDEX
     src: url("/fonts/Cocogoose Pro Semilight-trial.ttf");
   }
 
+@font-face {
+    font-family: GilroyBold;
+    src: url("/fonts/SVN-Gilroy Bold.otf");
+  }
+
+@font-face {
+    font-family: GilroyMedium;
+    src: url("/fonts/SVN-Gilroy Medium.otf");
+  }
+
 html,
 body {
-    font-family: "Roboto", sans-serif;
+    /* font-family: "Roboto", sans-serif; */
+    font-family: GilroyMedium;
 
     height: 100%;
 }
@@ -131,7 +142,7 @@ h5,
 h6,
 a {
     /* font-family: "Montserrat", sans-serif; */
-    font-family: CocogooseSemiLight;
+    font-family: GilroyBold;
 
     margin: 0 0 10px;
 }
@@ -4714,7 +4725,7 @@ td {
 
     width: calc(20% -29px);
     width: calc(20% -29px);
-    width: 22%;
+    width: 30%;
     height: 55px;
 
     -webkit-transition: background-color, 0.08s ease-out 0s;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import DisplayContext from "../context/display-context";
 
-const steps = ["Cart", "Address", "Payment"];
+const steps = ["BAG", "ADDRESS", "PAYMENT"];
 // const steps = ["Cart", "Address", "Shipping", "Payment"];
 
 function CartStep() {

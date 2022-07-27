@@ -270,7 +270,7 @@ function ModalProduct({ isActive, setActive, product }) {
                                                     onClick={handleAddToCart}
                                                 >
                                                     <i className="fa fa-shopping-cart" />{" "}
-                                                    Add to cart
+                                                    Add to bag
                                                 </button>
                                             </div>
                                         </div>

@@ -37,9 +37,13 @@ const routes2 = [
         name: "Retailers",
         path: "/retailer",
     },
+    // {
+    //     name: "Contact",
+    //     path: "/contact",
+    // },
     {
-        name: "Contact",
-        path: "/contact",
+        name: "About us",
+        path: "/about",
     },
 ];
 
@@ -351,12 +355,13 @@ function Header() {
                                             style={{
                                                 width: "75px",
                                             }}
-                                            src={getStrapiMedia(
-                                                get(
-                                                    global,
-                                                    "attributes.main_logo"
-                                                )
-                                            )}
+                                            src="http://cms.signedcontract.vn/uploads/SIGNED_CONTRACT_LOGO_BLACK_306338a45d.png"
+                                            // src={getStrapiMedia(
+                                            //     get(
+                                            //         global,
+                                            //         "attributes.main_logo"
+                                            //     )
+                                            // )}
                                             alt="domino"
                                         />
                                     </a>
@@ -371,6 +376,7 @@ function Header() {
                                     style={{
                                         display: "flex",
                                         justifyContent: "end",
+                                        WebkitJustifyContent: "flex-end"
                                     }}
                                 >
                                     {routes2.map((route) => (

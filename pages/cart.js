@@ -80,20 +80,20 @@ function Cart() {
     };
     return (
         <div className="mb-75">
-            <BreadCrumb title={"Cart"} />
+            <BreadCrumb title={"Checkout"} />
             <div className="cart-top-heading">
                 <div className="container">
                     <div className="summery-top">
                         <div className="row">
                             <div className="col-md-6 col-sm-6 col-xs-12">
                                 <div className="cart-sumttl">
-                                    <h3>Shopping-cart summary </h3>
+                                    <h3>Shopping-bag summary </h3>
                                 </div>
                             </div>
                             <div className="col-md-6 col-sm-6 col-xs-12">
                                 <div className="cart-product-desc">
                                     <p>
-                                        Your shopping cart contains:{" "}
+                                        Your shopping bag contains:{" "}
                                         {cart.items.length} products{" "}
                                     </p>
                                 </div>

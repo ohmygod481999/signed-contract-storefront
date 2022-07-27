@@ -33,12 +33,13 @@ function Address({ isProcessing, handleShippingSubmit, handleDeliverySubmit }) {
             setValue("address_1", address_1);
             setValue("country_code", country_code);
             setValue("city", city);
-            setValue("postal_code", postal_code);
+            // setValue("postal_code", postal_code);
         }
     }, [cart]);
 
     const onSubmit = async (data) => {
         const { email, ...rest } = data;
+        rest['postal_code'] = "10000"
         await handleShippingSubmit(rest, email);
         const shippingOptions = await getShippingOptions();
         await handleDeliverySubmit(shippingOptions[0]);
@@ -189,7 +190,7 @@ function Address({ isProcessing, handleShippingSubmit, handleDeliverySubmit }) {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-6">
+                                    {/* <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="inputPostalcode">
                                                 Postal code
@@ -204,7 +205,7 @@ function Address({ isProcessing, handleShippingSubmit, handleDeliverySubmit }) {
                                                 })}
                                             />
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className=" lp-account-btn btn-ac add-btn">

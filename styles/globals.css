@@ -90,6 +90,7 @@ input[type="number"] {
 }
 
 .bag-item__title {
+    font-family: GilroyBold;
     width: 150px;
     font-weight: 1000;
     text-transform: uppercase;
@@ -121,6 +122,7 @@ input[type="number"] {
 .bag-item__price {
     line-height: 30px;
     font-weight: 1000;
+    font-family: GilroyBold;
 }
 
 .bag-item__thumbnail img {
@@ -143,6 +145,7 @@ input[type="number"] {
 
 .bag-subtotal__price {
     font-size: 20px;
+    font-family: GilroyBold;
 }
 
 .bag-subtotal__title {
@@ -161,6 +164,7 @@ input[type="number"] {
     cursor: pointer;
     font-weight: 1000;
     font-size: 20px;
+    font-family: GilroyBold;
 }
 
 .bag-checkout img {

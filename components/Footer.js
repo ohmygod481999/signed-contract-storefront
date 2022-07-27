@@ -22,18 +22,15 @@ function Footer() {
                         }}
                     >
                         <Link href="/">
-                            <a
-                                style={{
-                                    marginBottom: "10px",
-                                }}
-                            >
+                            <a>
                                 <img
                                     style={{
                                         width: "75px",
                                     }}
-                                    src={getStrapiMedia(
-                                        get(global, "attributes.secondary_logo")
-                                    )}
+                                    src="http://cms.signedcontract.vn/uploads/SIGNED_CONTRACT_LOGO_WHITE_167d9584bd.png"
+                                    // src={getStrapiMedia(
+                                    //     get(global, "attributes.secondary_logo")
+                                    // )}
                                     alt="domino"
                                 />
                             </a>
@@ -48,32 +45,30 @@ function Footer() {
                             }}
                         >
                             <li>
-                                <Link href={"/purchase-policy"}>
+                                <Link href={"/policy"}>
                                     <a
-                                        title="Contact us"
+                                        title="Our policy"
                                         style={{
                                             color: "#FFF",
                                             // textTransform: "uppercase",
                                             fontSize: "13px",
                                         }}
                                     >
-                                        PURCHASE POLICY
+                                        Our policy
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/return-policy"}>
-                                    <a
-                                        title="Discount"
-                                        style={{
-                                            color: "#FFF",
-                                            // textTransform: "uppercase",
-                                            fontSize: "13px",
-                                        }}
-                                    >
-                                        RETURN POLICY
-                                    </a>
-                                </Link>
+                                <a
+                                    href="mailto:info@signedcontract.asia"
+                                    style={{
+                                        color: "#FFF",
+                                        // textTransform: "uppercase",
+                                        fontSize: "13px",
+                                    }}
+                                >
+                                    Info@signedcontract.asia
+                                </a>
                             </li>
                             <li>
                                 <ul className="footer-social-icon">
@@ -96,19 +91,20 @@ function Footer() {
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            fontSize: "16px",
                         }}
                     >
                         <h3
+                            className="hidden-xs"
                             style={{
                                 marginBottom: 0,
+                                fontSize: "21px",
                             }}
                         >
                             BE A MAN
                             <br />
-                            WHO PROVES NOT ALL
+                            WHO PROVES NOT
                             <br />
-                            MAN ARE SAME
+                            ALL MAN ARE SAME
                         </h3>
                     </div>
                 </div>
