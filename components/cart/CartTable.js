@@ -102,7 +102,9 @@ function CartTable() {
                                                     <td className="td3">
                                                         <span>In stock</span>
                                                     </td>
-                                                    <td className="td4">
+                                                    <td className="td4" style={{
+                                                        padding: "5px"
+                                                    }}>
                                                         {formatMoney(item.unit_price)}
                                                     </td>
                                                     <td className="td5 item-qty">

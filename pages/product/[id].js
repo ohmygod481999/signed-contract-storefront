@@ -54,7 +54,9 @@ function Product({ product }) {
             <div className="compare-area compare-single-productt mb-75">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-6 col-sm-12 col-xs-12">
+                        <div className="col-md-6 col-sm-12 col-xs-12" style={{
+                            marginBottom: 30
+                        }}>
                             <div className="single-thumbnail-wrapper">
                                 <div className="single-product-tab">
                                     <ul

@@ -244,3 +244,29 @@ input[type="number"] {
     margin-top: 30px;
     margin-bottom: 50px;
 }
+
+@media (max-width: 767px) {
+    .modal-product {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .modal-product .product-images {
+        float: none;
+        width: 100%;
+    }
+
+    .modal-product .product-info {
+        float: none;
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .quick-add-to-cart .single_add_to_cart_button {
+        padding: 0 17px;
+    }
+
+    .cart-stylei::before {
+        display: none;
+    }
+}

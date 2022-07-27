@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import StoreContext from "../context/store-context";
 import { useRouter } from "next/router";
@@ -54,6 +54,8 @@ function Header() {
     const { cartView, updateCartViewDisplay } = useContext(DisplayContext);
     const { global } = useContext(DisplayContext);
 
+    const [toggledMenu, setToggledMenu] = useState(false);
+
     const handleChangeQuantity = (lineId, quantity) => {
         console.log(quantity);
         updateLineItem({
@@ -61,6 +63,12 @@ function Header() {
             quantity,
         });
     };
+
+    useEffect(() => {
+        if (toggledMenu) {
+            setToggledMenu(false);
+        }
+    }, [router.asPath]);
 
     // const [isOpen, setIsOpen] = React.useState(false)
 
@@ -90,6 +98,7 @@ function Header() {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
+                    maxWidth: "100%",
                 }}
             >
                 <div>
@@ -246,65 +255,6 @@ function Header() {
                     </div>
                 </div>
             </div>
-            {/* <div className="header-middle">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-3 col-sm-3 col-xs-12">
-                            <div className="header-logo">
-                                <Link href="/">
-                                    <a>
-                                        <img
-                                            src="images/logo_1.png"
-                                            alt="domino"
-                                        />
-                                    </a>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="col-md-9 col-sm-9 col-xs-12">
-                            <div className="header-whishlist">
-                                <div className="header-middle-phone">
-                                    <span>
-                                        <i className="fa fa-phone" />
-                                        1-888-123-456-89
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="container">
-                    <div
-                        className=""
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <div className="">
-                            <div className="header-logo">
-                                <Link href="/">
-                                    <a>
-                                        <img
-                                            style={{
-                                                width: "100px"
-                                            }}
-                                            src={getStrapiMedia(
-                                                get(
-                                                    global,
-                                                    "attributes.main_logo"
-                                                )
-                                            )}
-                                            alt="domino"
-                                        />
-                                    </a>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-            {/*header main menu start*/}
             <div id="sticky-header" className="main-menu-wrapper hp1-menu">
                 <div className="container">
                     <div
@@ -376,7 +326,7 @@ function Header() {
                                     style={{
                                         display: "flex",
                                         justifyContent: "end",
-                                        WebkitJustifyContent: "flex-end"
+                                        WebkitJustifyContent: "flex-end",
                                     }}
                                 >
                                     {routes2.map((route) => (
@@ -407,11 +357,75 @@ function Header() {
                         </div>
                     </div>
                 </div>
-                {/* <div className="mobile-menu-area hp1-mobile-area">
-                    <div className="container">
+                <div className="mobile-menu-area hp1-mobile-area">
+                    <div className="container mean-container">
+                        <div className="mean-bar">
+                            <a
+                                href="#nav"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setToggledMenu(!toggledMenu);
+                                }}
+                                className="meanmenu-reveal"
+                                style={{
+                                    background: "",
+                                    color: "",
+                                    right: 0,
+                                    left: "auto",
+                                    fontSize: "18px",
+                                    textIndent: "0px",
+                                }}
+                            >
+                                {toggledMenu ? (
+                                    "X"
+                                ) : (
+                                    <>
+                                        <span />
+                                        <span />
+                                        <span />
+                                    </>
+                                )}
+                            </a>
+                            <nav className="mean-nav">
+                                <ul
+                                    style={{
+                                        display: toggledMenu ? "block" : "none",
+                                    }}
+                                >
+                                    {routes.map((route, i) => (
+                                        <li key={i}>
+                                            <Link href={route.path}>
+                                                <a>{route.name}</a>
+                                            </Link>
+                                        </li>
+                                    ))}
+                                    {routes2.map((route, i) => (
+                                        <li key={i}>
+                                            <Link href={route.path}>
+                                                <a>{route.name}</a>
+                                            </Link>
+                                        </li>
+                                    ))}
+
+                                    <li
+                                        className="my-bag-header"
+                                        onClick={updateCartViewDisplay}
+                                        style={{
+                                            cursor: "pointer",
+                                        }}
+                                    >
+                                        <a>My bag ({numItems}) </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                         <div className="row">
                             <div className="col-xs-12">
-                                <nav className="active-mobile-menu">
+                                <div className="mean-push" />
+                                <nav
+                                    className="active-mobile-menu"
+                                    style={{ display: "none" }}
+                                >
                                     <ul>
                                         <li>
                                             <a href="index.html">Home</a>
@@ -731,7 +745,7 @@ function Header() {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
             {/*header main menu end*/}
         </div>

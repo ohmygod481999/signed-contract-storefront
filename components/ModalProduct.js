@@ -103,7 +103,14 @@ function ModalProduct({ isActive, setActive, product }) {
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div className="modal-body" ref={ref}>
+                        <div
+                            className="modal-body"
+                            ref={ref}
+                            style={{
+                                maxHeight: "80vh",
+                                overflowY: "scroll",
+                            }}
+                        >
                             {product ? (
                                 <div className="modal-product">
                                     <div className="product-images">
@@ -197,9 +204,7 @@ function ModalProduct({ isActive, setActive, product }) {
                                             </div>
                                         </div>{" "}
                                         <Link href={`/product/${product.id}`}>
-                                            <a className="see-all">
-                                                Show more
-                                            </a>
+                                            <a className="see-all">Show more</a>
                                         </Link>
                                         {product.variants.length > 1 &&
                                             product.options.map((option) => (

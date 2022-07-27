@@ -47,7 +47,10 @@ function Payment() {
                                         );
                                     case "manual":
                                         return (
-                                            <div className="col-xs-12">
+                                            <div className="col-md-12" style={{
+                                                padding: 0,
+                                                marginBottom: 20
+                                            }}>
                                                 <div
                                                     className="payment-confirm-wrapper seceond-confirm"
                                                     onClick={handlePayment}
@@ -63,8 +66,7 @@ function Payment() {
                                                             COD
                                                             <span className="gray-color">
                                                                 {" "}
-                                                                (Thanh toán khi
-                                                                nhận hàng)
+                                                                (Cash On Delivery)
                                                             </span>
                                                         </div>
                                                         <div className="confirm-right">
