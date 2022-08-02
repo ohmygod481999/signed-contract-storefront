@@ -21,9 +21,11 @@ function MyApp({ Component, pageProps }) {
     return (
         <StoreProvider>
             <DisplayProvider global={global}>
-                <ToastContainer style={{
-                    zIndex: 13001
-                }}/>
+                <ToastContainer
+                    style={{
+                        zIndex: 13001,
+                    }}
+                />
                 <Layout>
                     <Head>
                         {get(global, "attributes") && (
@@ -37,6 +39,46 @@ function MyApp({ Component, pageProps }) {
                                 <title>
                                     {get(global, "attributes.site_name")}
                                 </title>
+                                <meta
+                                    name="description"
+                                    content={get(
+                                        global,
+                                        "attributes.default_seo.meta_description"
+                                    )}
+                                />
+                                <meta
+                                    property="og:title"
+                                    content={get(
+                                        global,
+                                        "attributes.default_seo.meta_title"
+                                    )}
+                                />
+                                <meta
+                                    property="og:description"
+                                    content={get(
+                                        global,
+                                        "attributes.default_seo.meta_description"
+                                    )}
+                                />
+
+                                <meta
+                                    property="og:image"
+                                    content={getStrapiMedia(
+                                        get(
+                                            global,
+                                            "attributes.default_seo.meta_image"
+                                        )
+                                    )}
+                                />
+                                <meta
+                                    name="image"
+                                    content={getStrapiMedia(
+                                        get(
+                                            global,
+                                            "attributes.default_seo.meta_image"
+                                        )
+                                    )}
+                                />
                             </>
                         )}
 
@@ -119,7 +161,7 @@ MyApp.getInitialProps = async (ctx) => {
 
     // Fetch global site settings from Strapi
     const globalRes = await fetchAPI("/global", {
-        populate: "*",
+        populate: "deep",
     });
     // Pass the data to our page via props
     return { ...appProps, pageProps: { global: globalRes.data } };
