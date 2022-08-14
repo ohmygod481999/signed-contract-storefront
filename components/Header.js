@@ -20,7 +20,8 @@ const routes = [
     },
     {
         name: "Brochure",
-        path: "/brochure",
+        path: "https://drive.google.com/file/d/1zL9SlQwM5vSxHkG6N1NRSFmTX1ntL78E/view",
+        // path: "/brochure",
     },
     // {
     //     name: "Retailers",
@@ -33,10 +34,10 @@ const routes = [
 ];
 
 const routes2 = [
-    {
-        name: "Retailers",
-        path: "/retailer",
-    },
+    // {
+    //     name: "Retailers",
+    //     path: "/retailer",
+    // },
     // {
     //     name: "Contact",
     //     path: "/contact",
@@ -44,6 +45,10 @@ const routes2 = [
     {
         name: "About us",
         path: "/about",
+    },
+    {
+        name: "Our Policy",
+        path: "/policy",
     },
 ];
 
@@ -211,14 +216,14 @@ function Header() {
                     </div>
                 </div>
             </Drawer>
-            <div className="header-topbar-area-top">
+            {/* <div className="header-topbar-area-top">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 col-sm-4 col-xs-12">
                             <ul className="header-login posr text-left">
                                 <li>
                                     <Link href={"/policy"}>
-                                        <a>Our policy</a>
+                                        <a>OUR POLICY</a>
                                     </Link>
                                 </li>
                             </ul>
@@ -254,7 +259,7 @@ function Header() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div id="sticky-header" className="main-menu-wrapper hp1-menu">
                 <div className="container">
                     <div
@@ -358,7 +363,7 @@ function Header() {
                     </div>
                 </div>
                 <div className="mobile-menu-area hp1-mobile-area">
-                    <div className="container mean-container">
+                    <div className="mean-container">
                         <div className="mean-bar">
                             <a
                                 href="#nav"
@@ -419,7 +424,9 @@ function Header() {
                                 </ul>
                             </nav>
                         </div>
-                        <div className="row">
+                        <div className="row" style={{
+                            margin: 0
+                        }}>
                             <div className="col-xs-12">
                                 <div className="mean-push" />
                                 <nav

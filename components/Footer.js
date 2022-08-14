@@ -47,14 +47,14 @@ function Footer() {
                             <li>
                                 <Link href={"/policy"}>
                                     <a
-                                        title="Our policy"
+                                        title="OUR POLICY"
                                         style={{
                                             color: "#FFF",
                                             // textTransform: "uppercase",
                                             fontSize: "13px",
                                         }}
                                     >
-                                        Our policy
+                                        OUR POLICY
                                     </a>
                                 </Link>
                             </li>
@@ -73,12 +73,31 @@ function Footer() {
                             <li>
                                 <ul className="footer-social-icon">
                                     <li>
-                                        <a href="#">
+                                        <a href="mailto:info@signedcontract.asia">
+                                            <i className="zmdi zmdi-email" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            target={"_blank"}
+                                            rel="noreferrer"
+                                            href={get(
+                                                global,
+                                                "attributes.contact_info.facebook"
+                                            )}
+                                        >
                                             <i className="zmdi zmdi-facebook" />
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a
+                                            target={"_blank"}
+                                            rel="noreferrer"
+                                            href={get(
+                                                global,
+                                                "attributes.contact_info.insta"
+                                            )}
+                                        >
                                             <i className="zmdi zmdi-instagram" />
                                         </a>
                                     </li>

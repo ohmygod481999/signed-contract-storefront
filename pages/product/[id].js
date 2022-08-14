@@ -13,15 +13,19 @@ import {
 } from "../../utils/utils";
 import { toast } from "react-toastify";
 import DisplayContext from "../../context/display-context";
+import ReactMarkdown from "react-markdown";
+import Link from "next/link";
+import rehypeRaw from "rehype-raw";
+import Head from "next/head";
 
 function Product({ product }) {
     const { addVariantToCart } = useContext(StoreContext);
-    const { updateCartViewDisplay } = useContext(DisplayContext);
+    const { updateCartViewDisplay, global } = useContext(DisplayContext);
 
     const router = useRouter();
     const [tab, setTab] = useState(1);
     const [currentOption, setCurrentOption] = useState({
-        [product.options[0].id]: product.options[0].values[0].id
+        [product.options[0].id]: product.options[0].values[0].id,
     });
     const currentVariant = useMemo(
         () => getVariantFromOption(product, currentOption || {}),
@@ -29,7 +33,7 @@ function Product({ product }) {
     );
 
     console.log(product);
-    console.log(currentOption)
+    console.log(currentOption);
 
     const [quantity, setQuantity] = useState(1);
 
@@ -44,19 +48,40 @@ function Product({ product }) {
             quantity: quantity,
         });
 
-        updateCartViewDisplay()
+        updateCartViewDisplay();
         // toast(`${product.title} has added to cart !`)
     };
 
     return (
         <div>
+            <Head>
+                <title>
+                    {get(global, "attributes.site_name")} - {product.title}
+                </title>
+                <meta
+                    property="og:title"
+                    content={`${get(global, "attributes.site_name")} - ${
+                        product.title
+                    }`}
+                />
+                <meta name="description" content={product.description} />
+                <meta
+                    property="og:description"
+                    content={product.description}
+                />{" "}
+                <meta property="og:image" content={product.thumbnail} />
+                <meta name="image" content={product.thumbnail} />
+            </Head>
             {/* <BreadCrumb title={product.title} /> */}
             <div className="compare-area compare-single-productt mb-75">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-6 col-sm-12 col-xs-12" style={{
-                            marginBottom: 30
-                        }}>
+                        <div
+                            className="col-md-6 col-sm-12 col-xs-12"
+                            style={{
+                                marginBottom: 30,
+                            }}
+                        >
                             <div className="single-thumbnail-wrapper">
                                 <div className="single-product-tab">
                                     <ul
@@ -273,7 +298,11 @@ function Product({ product }) {
                                 </div>
                                 <div className="compare-conpart compare-conpart-text">
                                     <div className="skill-long-text">
-                                        <p>{product.description}</p>
+                                        <ReactMarkdown
+                                            rehypePlugins={[rehypeRaw]}
+                                        >
+                                            {product.description}
+                                        </ReactMarkdown>
                                     </div>
                                 </div>
                                 <div
@@ -283,21 +312,35 @@ function Product({ product }) {
                                 >
                                     <div className="compare-social">
                                         <div className="compare-social">
-                                            <button className=" btn btn-default com-tw">
-                                                <i className="fa fa-twitter" />{" "}
-                                                Twitter
-                                            </button>
-                                            <button className=" btn btn-default com-fb">
-                                                <i className="fa fa-facebook" />{" "}
-                                                Share
-                                            </button>
-                                            <button className="btn btn-default com-gp">
-                                                <i className="fa fa-google-plus" />{" "}
-                                                Google +
-                                            </button>
-                                            <button className=" btn btn-default com-pi">
-                                                <i className="fa fa-pinterest" />{" "}
-                                                Pinterest
+                                            <Link
+                                                href={`https://www.facebook.com/sharer/sharer.php?u=${
+                                                    typeof window !==
+                                                    "undefined"
+                                                        ? window.location.href
+                                                        : ""
+                                                }`}
+                                                target={"_blank"}
+                                                rel="noreferrer"
+                                            >
+                                                <button
+                                                    className=" btn btn-link"
+                                                    style={{
+                                                        color: "black",
+                                                    }}
+                                                >
+                                                    <i className="fa fa-facebook" />{" "}
+                                                    Facebook
+                                                </button>
+                                            </Link>
+
+                                            <button
+                                                className=" btn btn-link"
+                                                style={{
+                                                    color: "black",
+                                                }}
+                                            >
+                                                <i className="fa fa-instagram" />{" "}
+                                                Instagram
                                             </button>
                                         </div>
                                     </div>

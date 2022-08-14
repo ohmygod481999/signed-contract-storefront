@@ -5927,7 +5927,7 @@ button.btn.btn-default a {
 }
 
 .compare-social button:hover i {
-    color: #FFF;
+    /* color: #FFF; */
 }
 
 .skill-rating ul li {

@@ -11,6 +11,8 @@ import {
     getVnProductPrice,
     getVnProductPrices,
 } from "../utils/utils";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 function ModalProduct({ isActive, setActive, product }) {
     const ref = useRef();
@@ -204,7 +206,14 @@ function ModalProduct({ isActive, setActive, product }) {
                                             </div>
                                         </div>{" "}
                                         <Link href={`/product/${product.id}`}>
-                                            <a className="see-all">Show more</a>
+                                            <a
+                                                className="see-all"
+                                                style={{
+                                                    color: "black",
+                                                }}
+                                            >
+                                                Show more
+                                            </a>
                                         </Link>
                                         {product.variants.length > 1 &&
                                             product.options.map((option) => (
@@ -280,7 +289,11 @@ function ModalProduct({ isActive, setActive, product }) {
                                             </div>
                                         </div>
                                         <div className="quick-desc">
-                                            {product.description}
+                                            <ReactMarkdown
+                                                rehypePlugins={[rehypeRaw]}
+                                            >
+                                                {product.description}
+                                            </ReactMarkdown>
                                         </div>
                                         {/* <div className="social-sharing-modal">
                                             <div className="widget widget_socialsharing_widget">

@@ -3124,7 +3124,7 @@
     .mobile-menu-area {
         display: block;
 
-        margin-bottom: 18px;
+        /* margin-bottom: 18px; */
     }
 
     .mobile-menu-area-checkout {
@@ -4075,7 +4075,7 @@
     }
 
     .mobile-menu-area {
-        margin-bottom: 18px;
+        /* margin-bottom: 18px; */
     }
 
     .discout-right-top-image {

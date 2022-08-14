@@ -13,7 +13,9 @@ function policy({ policy }) {
                             <div className="blog-area-wrapper">
                                 <div className="single-blog-post">
                                     <div className="single-content-wrap">
-                                        <div className="singleblog-title title-head-normal">
+                                        <div className="singleblog-title title-head-normal" style={{
+                                            marginBottom: "20px"
+                                        }}>
                                             <h3>{policy.attributes.title}</h3>
                                         </div>
                                         <div className="blog-single-content">

@@ -2,6 +2,7 @@ import React from "react";
 import { fetchAPI } from "../utils/api";
 import { getStrapiMedia } from "../utils/media";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 function about({ about }) {
     console.log(about);
@@ -22,7 +23,7 @@ function about({ about }) {
                     <div className="col-md-5 col-sm-12 col-xs-12">
                         <div className="abt-content-wrapper">
                             <div className="abt-content">
-                                <ReactMarkdown>
+                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                                     {about.attributes.description}
                                 </ReactMarkdown>
                             </div>

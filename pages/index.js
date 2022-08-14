@@ -20,12 +20,22 @@ export default function Home({ products, home }) {
 
     return (
         <div>
-            <Slider2 images={home.attributes.main_slides}/>
-            <Banner2 image={home.attributes.banner}/>
+            <video autoPlay muted loop style={{
+                width: "100%",
+                padding: 0,
+                margin: 0
+            }}>
+                <source
+                    src={getStrapiMedia(home.attributes.banner_video)}
+                    type="video/mp4"
+                />
+            </video>
+            {/* <Slider2 images={home.attributes.main_slides}/> */}
+            <Banner2 image={home.attributes.banner} />
             {/* <FreeOffer content={home.attributes.three_content}/> */}
             {/* <DiscountArea /> */}
             <ProductArea products={products} />
-            <Brand images={home.attributes.partners}/>
+            <Brand images={home.attributes.partners} />
         </div>
     );
 }
@@ -33,7 +43,7 @@ export default function Home({ products, home }) {
 export const getStaticProps = async () => {
     const client = createClient();
     const { products } = await client.products.list();
-    console.log(products)
+    console.log(products);
 
     const homeRes = await fetchAPI("/home", {
         populate: "*",
