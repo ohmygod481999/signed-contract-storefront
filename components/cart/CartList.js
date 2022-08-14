@@ -55,7 +55,7 @@ function CartList() {
                                             </div>
                                         </td>
                                         <td className="product__description">
-                                            CLAY CONDITIONING SHAMPOO
+                                            {item.title}
                                         </td>
                                         <td className="product__price">
                                             {formatMoney(
