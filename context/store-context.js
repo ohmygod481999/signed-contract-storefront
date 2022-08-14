@@ -66,9 +66,19 @@ export const StoreProvider = ({ children }) => {
         }
 
         if (cartId) {
-            client.carts.retrieve(cartId).then((data) => {
-                dispatch({ type: "setCart", payload: data.cart });
-            });
+            client.carts
+                .retrieve(cartId)
+                .then((data) => {
+                    dispatch({ type: "setCart", payload: data.cart });
+                })
+                .catch((e) => {
+                    client.carts.create().then((data) => {
+                        dispatch({ type: "setCart", payload: data.cart });
+                        if (localStorage) {
+                            localStorage.setItem("cart_id", data.cart.id);
+                        }
+                    });
+                });
         } else {
             client.carts.create().then((data) => {
                 dispatch({ type: "setCart", payload: data.cart });
