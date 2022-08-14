@@ -39,9 +39,6 @@ function CartTable() {
                                                 <th className="th2">
                                                     Description
                                                 </th>
-                                                <th className="th3">
-                                                    Availability
-                                                </th>
                                                 <th className="th4">
                                                     Unit price
                                                 </th>
@@ -98,9 +95,6 @@ function CartTable() {
                                                             {item.variant.sku ||
                                                                 "N/A"}
                                                         </p>
-                                                    </td>
-                                                    <td className="td3">
-                                                        <span>In stock</span>
                                                     </td>
                                                     <td className="td4" style={{
                                                         padding: "5px"
