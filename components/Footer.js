@@ -67,16 +67,11 @@ function Footer() {
                                         fontSize: "13px",
                                     }}
                                 >
-                                    Info@signedcontract.asia
+                                     <i className="zmdi zmdi-email" />{" "}info@signedcontract.asia
                                 </a>
                             </li>
                             <li>
                                 <ul className="footer-social-icon">
-                                    <li>
-                                        <a href="mailto:info@signedcontract.asia">
-                                            <i className="zmdi zmdi-email" />
-                                        </a>
-                                    </li>
                                     <li>
                                         <a
                                             target={"_blank"}

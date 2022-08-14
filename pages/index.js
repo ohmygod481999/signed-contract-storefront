@@ -23,7 +23,7 @@ export default function Home({ products, home }) {
             <video autoPlay muted loop style={{
                 width: "100%",
                 padding: 0,
-                margin: 0
+                marginTop: -1
             }}>
                 <source
                     src={getStrapiMedia(home.attributes.banner_video)}
