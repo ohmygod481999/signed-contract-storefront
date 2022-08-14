@@ -170,7 +170,7 @@ function CartTable() {
                                                     <tr className="tr4">
                                                         <td
                                                             rowSpan={3}
-                                                            colSpan={4}
+                                                            colSpan={3}
                                                             className="td15"
                                                         />
                                                         <td
