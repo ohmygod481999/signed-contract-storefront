@@ -20,7 +20,7 @@ const routes = [
     },
     {
         name: "Brochure",
-        path: "https://drive.google.com/file/d/1zL9SlQwM5vSxHkG6N1NRSFmTX1ntL78E/view",
+        path: "https://drive.google.com/file/d/1zL9SlQwM5vSxHkG6N1NRSFmTX1ntL78E/preview",
         // path: "/brochure",
     },
     // {
