@@ -35,7 +35,7 @@ export default function Home({ products, home }) {
             {/* <FreeOffer content={home.attributes.three_content}/> */}
             {/* <DiscountArea /> */}
             <ProductArea products={products} />
-            <Brand images={home.attributes.partners} />
+            {/* <Brand images={home.attributes.partners} /> */}
         </div>
     );
 }
