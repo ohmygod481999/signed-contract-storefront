@@ -44,7 +44,7 @@ export const Payment = () => {
     ) : (
         <div className="order-summary-section">
             <div className="order-summary-header">
-                <h1>ORDER SUMMARY</h1>
+                <h1>YOUR ORDER IS ON THE WAY !!!</h1>
                 <p className="order-summary__order-id">
                     Order ID: <span>#{paddingId(order.display_id)}</span>
                 </p>
@@ -52,7 +52,7 @@ export const Payment = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-8">
-                        <h4>MY BAG</h4>
+                        <h4>ORDER DETAIL</h4>
                         <div className="order-summary-cart">
                             {order.items.map((item) => (
                                 <div
@@ -77,7 +77,7 @@ export const Payment = () => {
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <h4>ADDRESS</h4>
+                        <h4>INFORMATION</h4>
                         <div className="order-summary-cart__address">
                             <p>{order.shipping_address.first_name}</p>
                             <p>{order.shipping_address.address_1}</p>

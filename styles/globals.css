@@ -184,7 +184,7 @@ input[type="number"] {
 /* order summary */
 
 .order-summary__order-id {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .order-summary__order-id span{
@@ -205,6 +205,8 @@ input[type="number"] {
 
 .order-summary-header {
     text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .order-summary-cart__item {
